@@ -190,6 +190,11 @@ void PolygonCollider::ProjectVertices(Vector3& normal, std::vector<Vector3>& ver
 	}
 }
 
+const std::vector<Vector3>& PolygonCollider::GetVertices() const
+{
+	return m_vertices;
+}
+
 Vector3 PolygonCollider::ApproximateCenter(std::vector<Vector3>& vertices)
 {
 	Vector3 sum;

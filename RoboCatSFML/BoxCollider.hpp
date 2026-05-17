@@ -13,5 +13,7 @@ public:
 	virtual bool CollideWith(CircleCollider* other) override;
 	virtual bool CollideWith(PolygonCollider* other) override;
 
+	ColliderType GetColliderType() const override { return ColliderType::kBox; };
+
 	Vector3 GetBoxSize() const;
 };

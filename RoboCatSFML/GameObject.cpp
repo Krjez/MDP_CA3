@@ -23,6 +23,75 @@ void GameObject::SetNetworkId(int inNetworkId)
 
 }
 
+uint32_t GameObject::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
+{
+	uint32_t writtenState = 0;
+
+	if (inDirtyState & ERS_Pose)
+	{
+		inOutputStream.Write((bool)true);
+
+		Vector3 location = GetLocation();
+		inOutputStream.Write(location.mX);
+		inOutputStream.Write(location.mY);
+
+		inOutputStream.Write(GetRotation());
+
+		inOutputStream.Write(GetScale());
+
+		writtenState |= ERS_Pose;
+	}
+	else
+	{
+		inOutputStream.Write((bool)false);
+	}
+
+	if (inDirtyState & ERS_Color)
+	{
+		inOutputStream.Write((bool)true);
+
+		inOutputStream.Write(GetColor());
+
+		writtenState |= ERS_Color;
+	}
+	else
+	{
+		inOutputStream.Write((bool)false);
+	}
+
+	return writtenState;
+}
+
+void GameObject::Read(InputMemoryBitStream& inInputStream)
+{
+	bool stateBit;
+
+	inInputStream.Read(stateBit);
+	if (stateBit)
+	{
+		Vector3 location;
+		inInputStream.Read(location.mX);
+		inInputStream.Read(location.mY);
+		SetLocation(location);
+
+		float rotation;
+		inInputStream.Read(rotation);
+		SetRotation(rotation);
+
+		float scale;
+		inInputStream.Read(scale);
+		SetScale(scale);
+	}
+
+	inInputStream.Read(stateBit);
+	if (stateBit)
+	{
+		Vector3 color;
+		inInputStream.Read(color);
+		SetColor(color);
+	}
+}
+
 void GameObject::SetRotation(float inRotation)
 {
 	//should we normalize using fmodf?

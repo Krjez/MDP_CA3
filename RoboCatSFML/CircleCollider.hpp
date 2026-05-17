@@ -15,6 +15,8 @@ public:
 	virtual bool CollideWith(CircleCollider* other) override;
 	virtual bool CollideWith(PolygonCollider* other) override;
 
+	ColliderType GetColliderType() const override { return ColliderType::kCircle; };
+
 	float GetRadius() const;
 	Vector3 GetCenter() const;
 };

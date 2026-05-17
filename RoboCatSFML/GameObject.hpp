@@ -11,6 +11,14 @@ class GameObject
 public:
 	CLASS_IDENTIFICATION('GOBJ', GameObject)
 
+		enum EGameObjectReplicationState
+	{
+		ERS_Pose = 1 << 30,
+		ERS_Color = 1 << 31,
+
+		ERS_AllState = ERS_Pose | ERS_Color
+	};
+
 	GameObject();
 	virtual ~GameObject() {}
 
@@ -47,8 +55,8 @@ public:
 	int	GetNetworkId() const { return mNetworkId; }
 	void SetNetworkId(int inNetworkId);
 
-	virtual uint32_t Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const { (void)inOutputStream; (void)inDirtyState; return 0; }
-	virtual void Read(InputMemoryBitStream& inInputStream) { (void)inInputStream; }
+	virtual uint32_t Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const;
+	virtual void Read(InputMemoryBitStream& inInputStream);
 
 private:
 	Vector3	mLocation;

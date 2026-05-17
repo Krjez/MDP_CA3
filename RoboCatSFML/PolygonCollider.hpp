@@ -15,6 +15,9 @@ public:
 	virtual bool CollideWith(CircleCollider* other) override;
 	virtual bool CollideWith(PolygonCollider* other) override;
 
+	ColliderType GetColliderType() const override { return ColliderType::kPolygon; };
+	const std::vector<Vector3>& GetVertices() const;
+
 	static Vector3 ApproximateCenter(std::vector<Vector3>& vertices);
 	static void ProjectVertices(Vector3& normal, std::vector<Vector3>& vertices, float& outMin, float& outMax);
 	static bool CheckPolygonSAT(

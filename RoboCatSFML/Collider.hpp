@@ -12,6 +12,13 @@ enum CollisionLayer
 	kGoal = 1 << 7,
 };
 
+enum ColliderType
+{
+	kBox,
+	kCircle,
+	kPolygon
+};
+
 class BoxCollider;
 class CircleCollider;
 class PolygonCollider;
@@ -47,6 +54,8 @@ public:
 	CollisionLayer GetLayer() const;
 	void SetLayer(CollisionLayer layer);
 	void SetIgnoreLayers(unsigned int layers);
+
+	virtual ColliderType GetColliderType() const = 0;
 
 	bool CheckLayers(Collider* other) const;
 	bool BoundingBoxOverlap(Collider* other);
