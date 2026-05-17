@@ -3,7 +3,7 @@
 RoboCat::RoboCat() :
 	GameObject(),
 	m_physics_body(this, 1, 500, 350, 0.001f, 0.1f),
-	m_collider(this, 20.f),
+	m_collider(this, 64.f),
 	mMaxRotationSpeed(100.f),
 	mLastMoveTimestamp(0.f),
 	mThrustDir(0.f),

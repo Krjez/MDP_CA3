@@ -9,4 +9,4 @@
 
 #include "RoboCatServer.hpp"
 #include "YarnServer.hpp"
-
+#include "SGO_Wall.hpp"

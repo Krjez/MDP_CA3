@@ -12,6 +12,7 @@
 
 #include "RoboCatClient.hpp"
 #include "YarnClient.hpp"
+#include "CGO_Wall.hpp"
 
 #include "HUD.hpp"
 
@@ -19,5 +20,3 @@
 #include "ReplicationManagerClient.hpp"
 #include "NetworkManagerClient.hpp"
 #include "Client.hpp"
-
-

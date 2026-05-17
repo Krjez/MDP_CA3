@@ -95,6 +95,7 @@ class GameObject;
 #include "Timing.hpp"
 #include "Yarn.hpp"
 #include "ScoreBoardManager.hpp"
+#include "Wall.hpp"
 
 #include "WeightedTimedMovingAverage.hpp"
 #include "ReplicationCommand.hpp"

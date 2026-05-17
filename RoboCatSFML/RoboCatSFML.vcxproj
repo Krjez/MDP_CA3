@@ -188,6 +188,7 @@
     <ClInclude Include="Timing.hpp" />
     <ClInclude Include="TransmissionData.hpp" />
     <ClInclude Include="UDPSocket.hpp" />
+    <ClInclude Include="Wall.hpp" />
     <ClInclude Include="WeightedTimedMovingAverage.hpp" />
     <ClInclude Include="World.hpp" />
     <ClInclude Include="Yarn.hpp" />
@@ -228,6 +229,7 @@
     <ClCompile Include="TCPSocket.cpp" />
     <ClCompile Include="Timing.cpp" />
     <ClCompile Include="UDPSocket.cpp" />
+    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="Yarn.cpp" />
   </ItemGroup>

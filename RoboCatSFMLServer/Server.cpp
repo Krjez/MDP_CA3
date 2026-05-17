@@ -1,4 +1,5 @@
 #include "RoboCatServerPCH.hpp"
+#include "SGO_Wall.hpp"
 #include <iostream>
 
 bool Server::StaticInit()
@@ -13,6 +14,7 @@ Server::Server()
 	// TODO: Replace with our player pawn
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('WALL', SGO_Wall::StaticCreate);
 	
 
 	InitNetworkManager();
@@ -46,7 +48,12 @@ bool Server::InitNetworkManager()
 
 void Server::SetupWorld()
 {
-	// TODO: Spawn stuff here
+	WallPtr wall = std::static_pointer_cast<Wall>(GameObjectRegistry::sInstance->CreateGameObject('WALL'));
+
+	wall->SetLocation(Vector3(256, 256, 0.f));
+	wall->SetCollider(128, 128);
+
+
 }
 
 void Server::DoFrame()

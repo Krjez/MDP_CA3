@@ -117,8 +117,16 @@ void Physics::HandleCollisions()
 
 void Physics::SimulateAllBodies(float dt)
 {
-	for (auto& entry : m_physics_body_map)
+	for (auto it = m_physics_body_map.begin(); it != m_physics_body_map.end(); )
 	{
-		entry.second->Simulate(dt);
+		if (it->second)
+		{
+			it->second->Simulate(dt);
+			++it;
+		}
+		else
+		{
+			it = m_physics_body_map.erase(it);
+		}
 	}
 }

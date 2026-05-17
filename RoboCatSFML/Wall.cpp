@@ -3,7 +3,7 @@
 
 Wall::Wall() :
 	GameObject(),
-	m_collider(nullptr)
+	m_collider(new CircleCollider(this, 1.0f))
 {
 }
 
@@ -26,26 +26,31 @@ uint32_t Wall::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyStat
 {
 	
 	uint32_t writtenState = GameObject::Write(inOutputStream, inDirtyState);
-
+	
 	if (inDirtyState & ERS_Collider)
 	{
 		inOutputStream.Write((bool)true);
-		inOutputStream.Write(m_collider->GetColliderType(), 4);
+		inOutputStream.Write(static_cast<int>(m_collider->GetColliderType()));
 
 		switch (m_collider->GetColliderType())
 		{
 		case kBox:
+		{
 			BoxCollider* box = static_cast<BoxCollider*>(&*m_collider);
 			inOutputStream.Write(box->GetBoxSize().mX);
 			inOutputStream.Write(box->GetBoxSize().mY);
 			break;
+		}
 
 		case kCircle:
+		{
 			CircleCollider* circle = static_cast<CircleCollider*>(&*m_collider);
 			inOutputStream.Write(circle->GetRadius());
 			break;
+		}
 
 		case kPolygon:
+		{
 			PolygonCollider* polygon = static_cast<PolygonCollider*>(&*m_collider);
 			const vector<Vector3>& verts = polygon->GetVertices();
 			inOutputStream.Write(verts.size(), 8);
@@ -56,12 +61,14 @@ uint32_t Wall::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyStat
 			}
 			break;
 		}
+		}
 		writtenState |= ERS_Collider;
 	}
 	else
 	{
 		inOutputStream.Write((bool)false);
 	}
+	
 	return writtenState;
 }
 
@@ -73,26 +80,31 @@ void Wall::Read(InputMemoryBitStream& inInputStream)
 	inInputStream.Read(stateBit);
 	if (stateBit)
 	{
-		ColliderType type;
-		inInputStream.Read(type, 4);
+		int type;
+		inInputStream.Read(type);
 		
 		switch (type)
 		{
 		case kBox:
+		{
 			float x;
 			inInputStream.Read(x);
 			float y;
 			inInputStream.Read(y);
 			m_collider.reset(new BoxCollider(this,x, y));
 			break;
+		}
 
 		case kCircle:
+		{
 			float radius;
 			inInputStream.Read(radius);
 			m_collider.reset(new CircleCollider(this, radius));
 			break;
+		}
 
 		case kPolygon:
+		{
 			int size;
 			std::vector<Vector3> verts;
 			inInputStream.Read(size, 8);
@@ -108,6 +120,7 @@ void Wall::Read(InputMemoryBitStream& inInputStream)
 
 			m_collider.reset(new PolygonCollider(this, verts));
 			break;
+		}
 		}
 	}
 }

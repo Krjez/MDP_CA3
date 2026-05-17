@@ -14,9 +14,9 @@ public:
 
 	static	GameObject* StaticCreate() { return new Wall(); }
 
-	virtual uint32_t	GetAllStateMask()	const override { return ERS_AllState | GameObject::ERS_AllState; }
+	virtual uint32_t GetAllStateMask()	const override { return ERS_AllState | GameObject::ERS_AllState; }
 
-	virtual uint32_t	Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;
+	virtual uint32_t Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;
 	virtual void Read(InputMemoryBitStream& inInputStream) override;
 
 	void SetCollider(float width, float height);
@@ -27,3 +27,5 @@ protected:
 	Wall();
 	unique_ptr<Collider> m_collider;
 };
+
+typedef shared_ptr< Wall >	WallPtr;
