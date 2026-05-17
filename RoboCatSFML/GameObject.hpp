@@ -1,7 +1,10 @@
+#pragma once
 #define CLASS_IDENTIFICATION(in_code, in_class) \
 enum {kClassId = in_code}; \
 virtual uint32_t GetClassId() const {return kClassId;} \
 static GameObject* CreateInstance() { return static_cast<GameObject*>(new in_class());}\
+
+class Pawn;
 
 class GameObject
 {
@@ -11,14 +14,13 @@ public:
 	GameObject();
 	virtual ~GameObject() {}
 
-	virtual RoboCat* GetAsCat() { return nullptr; }
+	virtual Pawn* AsPlayerPawn() { return nullptr; }
 
 	virtual uint32_t GetAllStateMask() const { return 0; }
 
-	//return whether to keep processing collision
-	virtual bool HandleCollisionWithCat(RoboCat* inCat) { (void)inCat; return true; }
+	virtual void HandleCollision(GameObject* other) {}
 
-	virtual void Update();
+	virtual void Update() {}
 
 	virtual void HandleDying() {}
 
@@ -31,15 +33,10 @@ public:
 	void SetScale(float inScale) { mScale = inScale; }
 	float GetScale()						const { return mScale; }
 
-
 	const Vector3& GetLocation() const { return mLocation; }
 	void SetLocation(const Vector3& inLocation) { mLocation = inLocation; }
 
-	float GetCollisionRadius() const { return mCollisionRadius; }
-	void SetCollisionRadius(float inRadius) { mCollisionRadius = inRadius; }
-
 	Vector3	GetForwardVector() const;
-
 
 	void SetColor(const Vector3& inColor) { mColor = inColor; }
 	const Vector3& GetColor() const { return mColor; }
@@ -55,16 +52,14 @@ public:
 
 private:
 	Vector3	mLocation;
-	Vector3	mColor;
-
-	float mCollisionRadius;
-
 	float mRotation;
 	float mScale;
-	int	mIndexInWorld;
+
+	Vector3	mColor;
 
 	bool mDoesWantToDie;
 
+	int	mIndexInWorld;
 	int	mNetworkId;
 
 };

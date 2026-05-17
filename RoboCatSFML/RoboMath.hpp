@@ -74,22 +74,22 @@ public:
 		return *this;
 	}
 
-	float Length()
+	float Length() const
 	{
 		return sqrtf(mX * mX + mY * mY + mZ * mZ);
 	}
 
-	float LengthSq()
+	float LengthSq() const
 	{
 		return mX * mX + mY * mY + mZ * mZ;
 	}
 
-	float Length2D()
+	float Length2D() const
 	{
 		return sqrtf(mX * mX + mY * mY);
 	}
 
-	float LengthSq2D()
+	float LengthSq2D() const
 	{
 		return mX * mX + mY * mY;
 	}

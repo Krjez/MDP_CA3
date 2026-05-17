@@ -14,7 +14,7 @@ struct ReplicationCommand
 {
 public:
 
-	ReplicationCommand() {}
+	ReplicationCommand() : mAction(), mDirtyState() {}
 	ReplicationCommand(uint32_t inInitialDirtyState) : mAction(RA_Create), mDirtyState(inInitialDirtyState) {}
 
 	//if the create is ack'd, we can demote to just an update...

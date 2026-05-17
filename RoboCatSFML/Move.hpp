@@ -2,7 +2,7 @@ class Move
 {
 public:
 
-	Move() {}
+	Move() : mInputState(), mTimestamp(), mDeltaTime() {}
 
 	Move(const InputState& inInputState, float inTimestamp, float inDeltaTime) :
 		mInputState(inInputState),

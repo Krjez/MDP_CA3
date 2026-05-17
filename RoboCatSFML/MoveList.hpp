@@ -20,7 +20,7 @@ public:
 
 	void			Clear() { mMoves.clear(); }
 	bool			HasMoves()				const { return !mMoves.empty(); }
-	int				GetMoveCount()			const { return mMoves.size(); }
+	int				GetMoveCount()			const { return (int)mMoves.size(); }
 
 	//for for each, we have to match stl calling convention
 	const_iterator	begin()					const { return mMoves.begin(); }

@@ -1,7 +1,7 @@
 #include "RoboCatPCH.hpp"
 
 
-int TCPSocket::Connect(const SocketAddress& inAddress)
+int TCPSocket::Connect(const SocketAddress& inAddress) const
 {
 	int err = connect(mSocket, &inAddress.mSockAddr, inAddress.GetSize());
 	if (err < 0)
@@ -12,7 +12,7 @@ int TCPSocket::Connect(const SocketAddress& inAddress)
 	return NO_ERROR;
 }
 
-int TCPSocket::Listen(int inBackLog)
+int TCPSocket::Listen(int inBackLog) const
 {
 	int err = listen(mSocket, inBackLog);
 	if (err < 0)
@@ -23,7 +23,7 @@ int TCPSocket::Listen(int inBackLog)
 	return NO_ERROR;
 }
 
-TCPSocketPtr TCPSocket::Accept(SocketAddress& inFromAddress)
+TCPSocketPtr TCPSocket::Accept(SocketAddress& inFromAddress) const
 {
 	socklen_t length = inFromAddress.GetSize();
 	SOCKET newSocket = accept(mSocket, &inFromAddress.mSockAddr, &length);
@@ -39,9 +39,9 @@ TCPSocketPtr TCPSocket::Accept(SocketAddress& inFromAddress)
 	}
 }
 
-int32_t	TCPSocket::Send(const void* inData, size_t inLen)
+int32_t	TCPSocket::Send(const void* inData, size_t inLen) const
 {
-	int bytesSentCount = send(mSocket, static_cast<const char*>(inData), inLen, 0);
+	int bytesSentCount = send(mSocket, static_cast<const char*>(inData), (int)inLen, 0);
 	if (bytesSentCount < 0)
 	{
 		SocketUtil::ReportError("TCPSocket::Send");
@@ -50,9 +50,9 @@ int32_t	TCPSocket::Send(const void* inData, size_t inLen)
 	return bytesSentCount;
 }
 
-int32_t	TCPSocket::Receive(void* inData, size_t inLen)
+int32_t	TCPSocket::Receive(void* inData, size_t inLen) const
 {
-	int bytesReceivedCount = recv(mSocket, static_cast<char*>(inData), inLen, 0);
+	int bytesReceivedCount = recv(mSocket, static_cast<char*>(inData), (int)inLen, 0);
 	if (bytesReceivedCount < 0)
 	{
 		SocketUtil::ReportError("TCPSocket::Receive");
@@ -61,7 +61,7 @@ int32_t	TCPSocket::Receive(void* inData, size_t inLen)
 	return bytesReceivedCount;
 }
 
-int TCPSocket::Bind(const SocketAddress& inBindAddress)
+int TCPSocket::Bind(const SocketAddress& inBindAddress) const
 {
 	int error = bind(mSocket, &inBindAddress.mSockAddr, inBindAddress.GetSize());
 	if (error != 0)

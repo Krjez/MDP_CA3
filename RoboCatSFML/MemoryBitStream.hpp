@@ -99,7 +99,10 @@ public:
 		int byteCount = mBitCapacity / 8;
 		mBuffer = static_cast<char*>(malloc(byteCount));
 		//copy
-		memcpy(mBuffer, inOther.mBuffer, byteCount);
+		if (mBuffer != 0)
+		{
+			memcpy(mBuffer, inOther.mBuffer, byteCount);
+		}
 	}
 
 	~InputMemoryBitStream() { if (mIsBufferOwner) { free(mBuffer); }; }

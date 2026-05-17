@@ -22,9 +22,6 @@ public:
 	void	SetIsLastMoveTimestampDirty(bool inIsDirty) { mIsLastMoveTimestampDirty = inIsDirty; }
 	bool	IsLastMoveTimestampDirty()						const { return mIsLastMoveTimestampDirty; }
 
-	void	HandleCatDied();
-	void	RespawnCatIfNecessary();
-
 private:
 
 	DeliveryNotificationManager	mDeliveryNotificationManager;
@@ -34,16 +31,12 @@ private:
 	string			mName;
 	int				mPlayerId;
 
-	InputState mInputState;
+	InputState		mInputState;
 
 	float			mLastPacketFromClientTime;
-	float			mTimeToRespawn;
 
 	MoveList		mUnprocessedMoveList;
 	bool			mIsLastMoveTimestampDirty;
-
-
-
 };
 
 typedef shared_ptr< ClientProxy >	ClientProxyPtr;

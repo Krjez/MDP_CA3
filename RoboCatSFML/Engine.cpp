@@ -60,7 +60,7 @@ int Engine::DoRunLoop()
 		Timing::sInstance.Update();
 		DoFrame();
 	}
-	return current_event.type;
+	return 0;
 }
 
 void Engine::DoFrame()

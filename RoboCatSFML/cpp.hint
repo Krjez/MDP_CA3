@@ -1,0 +1,4 @@
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define CLASS_IDENTIFICATION(in_code, in_class) enum {kClassId = in_code}; virtual uint32_t GetClassId() const {return kClassId;} static GameObject* CreateInstance() { return static_cast<GameObject*>(new in_class());}

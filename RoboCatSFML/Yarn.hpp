@@ -29,8 +29,6 @@ public:
 
 	virtual void Update() override;
 
-	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
-
 protected:
 	Yarn();
 	Vector3		mVelocity;

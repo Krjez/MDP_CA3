@@ -8,7 +8,7 @@ public:
 	class Entry
 	{
 	public:
-		Entry() {};
+		Entry() : mColor(), mPlayerId(), mPlayerName(), mScore(), mFormattedNameScore() {};
 
 		Entry(uint32_t inPlayerID, const string& inPlayerName, const Vector3& inColor);
 

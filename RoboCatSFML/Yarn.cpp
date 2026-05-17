@@ -6,10 +6,7 @@ Yarn::Yarn() :
 	mPlayerId(0)
 {
 	SetScale(GetScale() * 0.25f);
-	SetCollisionRadius(20.f);
 }
-
-
 
 uint32_t Yarn::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
@@ -64,24 +61,13 @@ uint32_t Yarn::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyStat
 	return writtenState;
 }
 
-
-
-bool Yarn::HandleCollisionWithCat(RoboCat* inCat)
-{
-	(void)inCat;
-
-	//you hit a cat, so look like you hit a cat
-	return false;
-}
-
-
 void Yarn::InitFromShooter(RoboCat* inShooter)
 {
 	SetColor(inShooter->GetColor());
 	SetPlayerId(inShooter->GetPlayerId());
 
 	Vector3 forward = inShooter->GetForwardVector();
-	SetVelocity(inShooter->GetVelocity() + forward * mMuzzleSpeed);
+	SetVelocity(inShooter->GetPhysics().GetVelocity() + forward * mMuzzleSpeed);
 	SetLocation(inShooter->GetLocation() /* + forward * 0.55f */);
 
 	SetRotation(inShooter->GetRotation());
@@ -89,12 +75,6 @@ void Yarn::InitFromShooter(RoboCat* inShooter)
 
 void Yarn::Update()
 {
-
-	float deltaTime = Timing::sInstance.GetDeltaTime();
-
-	SetLocation(GetLocation() + mVelocity * deltaTime);
-
-
-	//we'll let the cats handle the collisions
+	SetLocation(GetLocation() + mVelocity * Timing::sInstance.GetDeltaTime());
 }
 

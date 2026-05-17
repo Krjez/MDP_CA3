@@ -16,7 +16,7 @@ public:
 	void			UnregisterGameObject(GameObject* inGameObject);
 	void			SetStateDirty(int inNetworkId, uint32_t inDirtyState);
 
-	void			RespawnCats();
+	void RespawnPlayers();
 
 	ClientProxyPtr	GetClientProxy(int inPlayerId) const;
 

@@ -2,7 +2,6 @@
 
 GameObject::GameObject() :
 	mIndexInWorld(-1),
-	mCollisionRadius(1.f),
 	mDoesWantToDie(false),
 	mRotation(0.f),
 	mNetworkId(0),
@@ -11,17 +10,9 @@ GameObject::GameObject() :
 {
 }
 
-void GameObject::Update()
-{
-	//object don't do anything by default...	
-}
-
 
 Vector3 GameObject::GetForwardVector()	const
 {
-	//should we cache this when you turn?
-	//SDL appears to use radians while SFML uses degrees - make sure to convert to radians
-	//before using!
 	return Vector3(sinf(RoboMath::ToRadians(mRotation)), -cosf(RoboMath::ToRadians(mRotation)), 0.f);
 }
 

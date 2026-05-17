@@ -79,12 +79,12 @@ class GameObject;
 
 #include "GameObject.hpp"
 #include "GameObjectRegistry.hpp"
+
+#include "Pawn.hpp"
 #include "RoboCat.hpp"
 #include "World.hpp"
 #include "Timing.hpp"
-#include "Mouse.hpp"
 #include "Yarn.hpp"
-#include "StringUtils.hpp"
 #include "ScoreBoardManager.hpp"
 
 #include "WeightedTimedMovingAverage.hpp"

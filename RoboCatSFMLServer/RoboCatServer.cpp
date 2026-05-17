@@ -74,26 +74,3 @@ void RoboCatServer::HandleShooting()
 	}
 }
 
-void RoboCatServer::TakeDamage(int inDamagingPlayerId)
-{
-	mHealth--;
-	if (mHealth <= 0.f)
-	{
-		//score one for damaging player...
-		ScoreBoardManager::sInstance->IncScore(inDamagingPlayerId, 1);
-
-		//and you want to die
-		SetDoesWantToDie(true);
-
-		//tell the client proxy to make you a new cat
-		ClientProxyPtr clientProxy = NetworkManagerServer::sInstance->GetClientProxy(GetPlayerId());
-		if (clientProxy)
-		{
-			clientProxy->HandleCatDied();
-		}
-	}
-
-	//tell the world our health dropped
-	NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ECRS_Health);
-}
-
