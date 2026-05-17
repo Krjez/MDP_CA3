@@ -35,18 +35,12 @@ void RoboCatClient::Update()
 
 			ProcessInput(deltaTime, pendingMove->GetInputState());
 
-			//and simulate!
-
-			SimulateMovement(deltaTime);
-
 			//LOG( "Client Move Time: %3.4f deltaTime: %3.4f left rot at %3.4f", latestMove.GetTimestamp(), deltaTime, GetRotation() );
 		}
 	}
 	else
 	{
-		SimulateMovement(Timing::sInstance.GetDeltaTime());
-
-		if (RoboMath::Is2DVectorEqual(GetVelocity(), Vector3::Zero))
+		if (RoboMath::Is2DVectorEqual(GetPhysics().GetVelocity(), Vector3::Zero))
 		{
 			//we're in sync if our velocity is 0
 			mTimeLocationBecameOutOfSync = 0.f;
@@ -71,7 +65,7 @@ void RoboCatClient::Read(InputMemoryBitStream& inInputStream)
 
 	float oldRotation = GetRotation();
 	Vector3 oldLocation = GetLocation();
-	Vector3 oldVelocity = GetVelocity();
+	Vector3 oldVelocity = GetPhysics().GetVelocity();
 
 	float replicatedRotation;
 	Vector3 replicatedLocation;
@@ -83,7 +77,7 @@ void RoboCatClient::Read(InputMemoryBitStream& inInputStream)
 		inInputStream.Read(replicatedVelocity.mX);
 		inInputStream.Read(replicatedVelocity.mY);
 
-		SetVelocity(replicatedVelocity);
+		GetPhysics().SetVelocity(replicatedVelocity.mX, replicatedVelocity.mY, 0);
 
 		inInputStream.Read(replicatedLocation.mX);
 		inInputStream.Read(replicatedLocation.mY);
@@ -155,7 +149,7 @@ void RoboCatClient::DoClientSidePredictionAfterReplicationForLocalCat(uint32_t i
 			float deltaTime = move.GetDeltaTime();
 			ProcessInput(deltaTime, move.GetInputState());
 
-			SimulateMovement(deltaTime);
+			//SimulateMovement(deltaTime);
 		}
 	}
 }
@@ -194,7 +188,7 @@ void RoboCatClient::InterpolateClientSidePrediction(float inOldRotation, const V
 	}
 
 
-	if (!RoboMath::Is2DVectorEqual(inOldVelocity, GetVelocity()))
+	if (!RoboMath::Is2DVectorEqual(inOldVelocity, GetPhysics().GetVelocity()))
 	{
 		//LOG( "ERROR! Move replay ended with incorrect velocity!", 0 );
 
@@ -209,7 +203,8 @@ void RoboCatClient::InterpolateClientSidePrediction(float inOldRotation, const V
 		float durationOutOfSync = time - mTimeVelocityBecameOutOfSync;
 		if (durationOutOfSync < roundTripTime)
 		{
-			SetVelocity(Lerp(inOldVelocity, GetVelocity(), inIsForRemoteCat ? (durationOutOfSync / roundTripTime) : 0.1f));
+			Vector3 newVelocity = Lerp(inOldVelocity, GetPhysics().GetVelocity(), inIsForRemoteCat ? (durationOutOfSync / roundTripTime) : 0.1f);
+			GetPhysics().SetVelocity(newVelocity.mX, newVelocity.mY, newVelocity.mZ);
 		}
 		//otherwise, fine...
 
@@ -241,12 +236,12 @@ void RoboCatClient::DoClientSidePredictionAfterReplicationForRemoteCat(uint32_t 
 		{
 			if (rtt < deltaTime)
 			{
-				SimulateMovement(rtt);
+				//SimulateMovement(rtt);
 				break;
 			}
 			else
 			{
-				SimulateMovement(deltaTime);
+				//SimulateMovement(deltaTime);
 				rtt -= deltaTime;
 			}
 		}

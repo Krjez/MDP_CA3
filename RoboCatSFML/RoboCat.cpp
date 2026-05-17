@@ -2,13 +2,12 @@
 
 RoboCat::RoboCat() :
 	GameObject(),
+	m_physics_body(this, 1, 500, 350, 0.001f, 0.1f),
+	m_collider(this, 20.f),
 	mMaxRotationSpeed(100.f),
-	mMaxLinearSpeed(5000.f),
-	mVelocity(Vector3::Zero),
-	mWallRestitution(0.1f),
-	mCatRestitution(0.1f),
+	mLastMoveTimestamp(0.f),
 	mThrustDir(0.f),
-	mIsShooting(false),
+	mIsShooting(false)
 {
 }
 
@@ -22,25 +21,10 @@ void RoboCat::ProcessInput(float inDeltaTime, const InputState& inInputState)
 	float inputForwardDelta = inInputState.GetDesiredVerticalDelta();
 	mThrustDir = inputForwardDelta;
 
+	Vector3 direction = GetForwardVector() * mThrustDir;
+	m_physics_body.Accelerate(direction, Timing::sInstance.GetDeltaTime());
 
 	mIsShooting = inInputState.IsShooting();
-
-}
-
-void RoboCat::AdjustVelocityByThrust(float inDeltaTime)
-{
-	//just set the velocity based on the thrust direction -- no thrust will lead to 0 velocity
-	//simulating acceleration makes the client prediction a bit more complex
-	Vector3 forwardVector = GetForwardVector();
-	mVelocity = forwardVector * (mThrustDir * inDeltaTime * mMaxLinearSpeed);
-}
-
-void RoboCat::SimulateMovement(float inDeltaTime)
-{
-	//simulate us...
-	AdjustVelocityByThrust(inDeltaTime);
-	
-	SetLocation(GetLocation() + mVelocity * inDeltaTime);
 }
 
 void RoboCat::Update()
@@ -69,7 +53,7 @@ uint32_t RoboCat::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyS
 	{
 		inOutputStream.Write((bool)true);
 
-		Vector3 velocity = mVelocity;
+		Vector3 velocity = m_physics_body.GetVelocity();
 		inOutputStream.Write(velocity.mX);
 		inOutputStream.Write(velocity.mY);
 

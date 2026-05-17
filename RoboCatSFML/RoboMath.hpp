@@ -109,6 +109,27 @@ public:
 		mY /= length;
 	}
 
+	Vector3 NormalizedCopy() const
+	{
+		Vector3 norm(*this);
+		norm.Normalize();
+		return norm;
+	}
+
+	Vector3 NormalizedCopy2D() const
+	{
+		Vector3 norm(*this);
+		norm.Normalize2D();
+		return norm;
+	}
+
+	void FloorToInt()
+	{
+		mX = (float)(int)mX;
+		mY = (float)(int)mY;
+		mZ = (float)(int)mZ;
+	}
+
 	friend float Dot(const Vector3& inLeft, const Vector3& inRight)
 	{
 		return (inLeft.mX * inRight.mX + inLeft.mY * inRight.mY + inLeft.mZ * inRight.mZ);
@@ -131,6 +152,16 @@ public:
 	friend Vector3 Lerp(const Vector3& inA, const Vector3& inB, float t)
 	{
 		return Vector3(inA + t * (inB - inA));
+	}
+
+	friend Vector3 ProjectedOnto(const Vector3& inLeft, const Vector3& inRight)
+	{
+		return inRight.NormalizedCopy() * Dot(inLeft, inRight);
+	}
+
+	friend Vector3 ProjectedOnto2D(const Vector3& inLeft, const Vector3& inRight)
+	{
+		return inRight.NormalizedCopy2D() * Dot2D(inLeft, inRight);
 	}
 
 	static const Vector3 Zero;

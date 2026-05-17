@@ -1,0 +1,17 @@
+#pragma once
+
+class BoxCollider : public Collider
+{
+public:
+	BoxCollider(GameObject* parent, float width, float height, bool trigger = false);
+	~BoxCollider();
+
+	virtual bool CheckCollision(Collider* other) override;
+
+	virtual bool CollideWith(Collider* other) override;
+	virtual bool CollideWith(BoxCollider* other) override;
+	virtual bool CollideWith(CircleCollider* other) override;
+	virtual bool CollideWith(PolygonCollider* other) override;
+
+	Vector3 GetBoxSize() const;
+};

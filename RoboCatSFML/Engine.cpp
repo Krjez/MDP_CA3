@@ -10,6 +10,8 @@ Engine::Engine() : m_should_keep_running(true)
 
 	GameObjectRegistry::StaticInit();
 
+	Physics::StaticInit();
+
 	World::StaticInit();
 
 	ScoreBoardManager::StaticInit();
@@ -66,6 +68,8 @@ int Engine::DoRunLoop()
 void Engine::DoFrame()
 {
 	World::sInstance->Update();
+	Physics::sInstance->SimulateAllBodies(Timing::sInstance.GetDeltaTime());
+	Physics::sInstance->HandleCollisions();
 }
 
 

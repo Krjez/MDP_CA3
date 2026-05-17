@@ -153,7 +153,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AckRange.hpp" />
+    <ClInclude Include="BoxCollider.hpp" />
     <ClInclude Include="ByteSwap.hpp" />
+    <ClInclude Include="CircleCollider.hpp" />
+    <ClInclude Include="Collider.hpp" />
+    <ClInclude Include="Component.hpp" />
     <ClInclude Include="DeliveryNotificationManager.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="GameObject.hpp" />
@@ -167,6 +171,9 @@
     <ClInclude Include="MoveList.hpp" />
     <ClInclude Include="NetworkManager.hpp" />
     <ClInclude Include="Pawn.hpp" />
+    <ClInclude Include="Physics.hpp" />
+    <ClInclude Include="PhysicsBody.hpp" />
+    <ClInclude Include="PolygonCollider.hpp" />
     <ClInclude Include="ReplicationCommand.hpp" />
     <ClInclude Include="RoboCat.hpp" />
     <ClInclude Include="RoboCatPCH.hpp" />
@@ -187,6 +194,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AckRange.cpp" />
+    <ClCompile Include="BoxCollider.cpp" />
+    <ClCompile Include="CircleCollider.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="DeliveryNotificationManager.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -198,6 +209,9 @@
     <ClCompile Include="MoveList.cpp" />
     <ClCompile Include="NetworkManager.cpp" />
     <ClCompile Include="Pawn.cpp" />
+    <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="PhysicsBody.cpp" />
+    <ClCompile Include="PolygonCollider.cpp" />
     <ClCompile Include="RoboCat.cpp" />
     <ClCompile Include="RoboCatPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -21,12 +21,9 @@ public:
 
 	virtual void Update() override;
 
-	void SimulateMovement(float inDeltaTime);
 	void ProcessInput(float inDeltaTime, const InputState& inInputState) override;
 
-
-	void			SetVelocity(const Vector3& inVelocity) { mVelocity = inVelocity; }
-	const Vector3& GetVelocity()						const { return mVelocity; }
+	PhysicsBody& GetPhysics() { return m_physics_body; }
 
 	virtual uint32_t Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;
 
@@ -34,19 +31,8 @@ protected:
 	RoboCat();
 
 private:
-
-
-	void	AdjustVelocityByThrust(float inDeltaTime);
-
-	Vector3				mVelocity;
-
-
-	float				mMaxLinearSpeed;
-	float				mMaxRotationSpeed;
-
-	//bounce fraction when hitting various things
-	float				mWallRestitution;
-	float				mCatRestitution;
+	PhysicsBody m_physics_body;
+	CircleCollider m_collider;
 
 	float mMaxRotationSpeed;
 

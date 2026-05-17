@@ -80,6 +80,15 @@ class GameObject;
 #include "GameObject.hpp"
 #include "GameObjectRegistry.hpp"
 
+#include "Component.hpp"
+
+#include "Physics.hpp"
+#include "Collider.hpp"
+#include "BoxCollider.hpp"
+#include "CircleCollider.hpp"
+#include "PolygonCollider.hpp"
+#include "PhysicsBody.hpp"
+
 #include "Pawn.hpp"
 #include "RoboCat.hpp"
 #include "World.hpp"

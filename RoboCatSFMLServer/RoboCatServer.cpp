@@ -16,7 +16,7 @@ void RoboCatServer::Update()
 	RoboCat::Update();
 
 	Vector3 oldLocation = GetLocation();
-	Vector3 oldVelocity = GetVelocity();
+	Vector3 oldVelocity = GetPhysics().GetVelocity();
 	float oldRotation = GetRotation();
 
 	//are you controlled by a player?
@@ -34,7 +34,6 @@ void RoboCatServer::Update()
 				float deltaTime = unprocessedMove.GetDeltaTime();
 
 				ProcessInput(deltaTime, currentState);
-				SimulateMovement(deltaTime);
 
 				//LOG( "Server Move Time: %3.4f deltaTime: %3.4f left rot at %3.4f", unprocessedMove.GetTimestamp(), deltaTime, GetRotation() );
 
@@ -43,17 +42,11 @@ void RoboCatServer::Update()
 			moveList.Clear();
 		}
 	}
-	else
-	{
-		//do some AI stuff
-		SimulateMovement(Timing::sInstance.GetDeltaTime());
-	}
-
 
 	HandleShooting();
 
 	if (!RoboMath::Is2DVectorEqual(oldLocation, GetLocation()) ||
-		!RoboMath::Is2DVectorEqual(oldVelocity, GetVelocity()) ||
+		!RoboMath::Is2DVectorEqual(oldVelocity, GetPhysics().GetVelocity()) ||
 		oldRotation != GetRotation())
 	{
 		NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ECRS_Pose);
