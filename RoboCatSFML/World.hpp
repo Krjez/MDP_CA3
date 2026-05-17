@@ -17,11 +17,11 @@ public:
 
 	const std::vector< GameObjectPtr >& GetGameObjects()	const { return mGameObjects; }
 
+	float GetLeadingPawnXLocation();
+
 private:
 
 	World();
-
-	int	GetIndexOfGameObject(GameObjectPtr inGameObject);
 
 	std::vector< GameObjectPtr >	mGameObjects;
 

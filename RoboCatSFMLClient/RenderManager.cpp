@@ -63,9 +63,10 @@ void RenderManager::RenderComponents()
 
 void RenderManager::Render()
 {
-	//
-	// Clear the back buffer
-	//
+	//Sets camera view by the first player, 70% of the way across the screen, and centered vertically
+	view.setCenter(World::sInstance->GetLeadingPawnXLocation() - 256, 360);
+	WindowManager::sInstance->setView(view);
+
 	WindowManager::sInstance->clear(sf::Color(100, 149, 237, 255));
 
 	RenderManager::sInstance->RenderComponents();

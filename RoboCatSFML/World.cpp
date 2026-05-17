@@ -61,3 +61,22 @@ void World::Update()
 		}
 	}
 }
+
+float World::GetLeadingPawnXLocation()
+{
+	float maxDistanceX = 0.f;
+
+	for (GameObjectPtr go : mGameObjects)
+	{
+		if (go->AsPlayerPawn() != nullptr)
+		{
+			float distanceX = go->GetLocation().mX;
+
+			if (distanceX > maxDistanceX)
+			{
+				maxDistanceX = distanceX;
+			}
+		}
+	}
+	return maxDistanceX;
+}

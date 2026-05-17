@@ -24,7 +24,7 @@ private:
 
 	sf::View view;
 
-
+	//ptr to first player- we want to center the view on this guy
 };
 
 
