@@ -33,3 +33,8 @@ sf::Sprite& SpriteComponent::GetSprite()
 	return m_sprite;
 }
 
+
+void SpriteComponent::SetTextureSize(int inWidth, int inHeight)
+{
+	m_sprite.setTextureRect(sf::IntRect(0, 0, inWidth, inHeight));
+}

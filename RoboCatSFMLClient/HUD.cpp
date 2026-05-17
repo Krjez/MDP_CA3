@@ -72,7 +72,18 @@ void HUD::RenderText(const string& inStr, const Vector3& origin, const Vector3& 
 	text.setString(inStr);
 	text.setFillColor(sf::Color((sf::Uint8)inColor.mX, (sf::Uint8)inColor.mY, (sf::Uint8)inColor.mZ, 255));
 	text.setCharacterSize(50);
-	text.setPosition(World::sInstance->GetLeadingPawnXLocation() - 896 + origin.mX, origin.mY);
+
+	float leadingPawnX = World::sInstance->GetLeadingPawnXLocation();
+
+	if (leadingPawnX > 640)
+	{
+		text.setPosition(leadingPawnX - 896 + origin.mX, origin.mY);
+	}
+	else
+	{
+		text.setPosition(origin.mX - 256, origin.mY);
+	}
+	
 	text.setFont(*FontManager::sInstance->GetFont("carlito"));
 	WindowManager::sInstance->draw(text);
 }

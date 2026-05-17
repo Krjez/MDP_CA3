@@ -12,7 +12,7 @@ public:
 	void SetTexture(TexturePtr inTexture);
 	virtual sf::Sprite& GetSprite();
 	
-
+	void SetTextureSize(int inWidth, int inHeight);
 
 protected:
 

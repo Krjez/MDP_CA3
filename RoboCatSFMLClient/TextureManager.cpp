@@ -22,6 +22,7 @@ TexturePtr	TextureManager::GetTexture(const string& inTextureName)
 bool TextureManager::CacheTexture(string inTextureName, const char* inFileName)
 {
 	TexturePtr newTexture(new sf::Texture());
+	newTexture->setRepeated(true);
 	if (!newTexture->loadFromFile(inFileName))
 	{
 		return false;

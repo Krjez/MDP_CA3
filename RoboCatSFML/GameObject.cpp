@@ -6,6 +6,7 @@ GameObject::GameObject() :
 	mRotation(0.f),
 	mNetworkId(0),
 	mColor(Colors::White),
+	mTextureSize(128.f, 128.f, 0.f),
 	mScale(1.0f)
 {
 }
@@ -59,6 +60,19 @@ uint32_t GameObject::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDir
 		inOutputStream.Write((bool)false);
 	}
 
+	if (inDirtyState & ERS_Texture)
+	{
+		inOutputStream.Write((bool)true);
+
+		inOutputStream.Write(GetTextureSize());
+
+		writtenState |= ERS_Texture;
+	}
+	else
+	{
+		inOutputStream.Write((bool)false);
+	}
+
 	return writtenState;
 }
 
@@ -89,6 +103,15 @@ void GameObject::Read(InputMemoryBitStream& inInputStream)
 		Vector3 color;
 		inInputStream.Read(color);
 		SetColor(color);
+	}
+
+	inInputStream.Read(stateBit);
+	if (stateBit)
+	{
+		Vector3 textureSize;
+		inInputStream.Read(textureSize);
+		SetTextureSize(textureSize);
+		SetTextureRect(textureSize.mX, textureSize.mY);
 	}
 }
 

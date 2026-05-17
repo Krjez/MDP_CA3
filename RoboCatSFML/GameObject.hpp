@@ -13,10 +13,11 @@ public:
 
 		enum EGameObjectReplicationState
 	{
-		ERS_Pose = 1 << 30,
-		ERS_Color = 1 << 31,
+		ERS_Pose = 1 << 29,
+		ERS_Color = 1 << 30,
+		ERS_Texture = 1 << 31,
 
-		ERS_AllState = ERS_Pose | ERS_Color
+		ERS_AllState = ERS_Pose | ERS_Color | ERS_Texture
 	};
 
 	GameObject();
@@ -49,6 +50,9 @@ public:
 	void SetColor(const Vector3& inColor) { mColor = inColor; }
 	const Vector3& GetColor() const { return mColor; }
 
+	void SetTextureSize(const Vector3& inSize) { mTextureSize = inSize; }
+	const Vector3& GetTextureSize() const { return mTextureSize; }
+
 	bool DoesWantToDie() const { return mDoesWantToDie; }
 	void SetDoesWantToDie(bool inWants) { mDoesWantToDie = inWants; }
 
@@ -58,12 +62,15 @@ public:
 	virtual uint32_t Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const;
 	virtual void Read(InputMemoryBitStream& inInputStream);
 
+	virtual void SetTextureRect(float width, float height) {};
+
 private:
 	Vector3	mLocation;
 	float mRotation;
 	float mScale;
 
 	Vector3	mColor;
+	Vector3 mTextureSize;
 
 	bool mDoesWantToDie;
 

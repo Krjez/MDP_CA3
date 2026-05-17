@@ -48,12 +48,21 @@ bool Server::InitNetworkManager()
 
 void Server::SetupWorld()
 {
-	WallPtr wall = std::static_pointer_cast<Wall>(GameObjectRegistry::sInstance->CreateGameObject('WALL'));
+	WallPtr wallTop = std::static_pointer_cast<Wall>(GameObjectRegistry::sInstance->CreateGameObject('WALL'));
+	wallTop->SetLocation(Vector3(-300, 64, 0.f));
+	wallTop->SetCollider(256000, 32);
+	wallTop->SetTextureSize(Vector3(256000, 32, 0));
 
-	wall->SetLocation(Vector3(256, 256, 0.f));
-	wall->SetCollider(128, 128);
 
+	WallPtr wallBottom = std::static_pointer_cast<Wall>(GameObjectRegistry::sInstance->CreateGameObject('WALL'));
+	wallBottom->SetLocation(Vector3(-300, 752, 0.f));
+	wallBottom->SetCollider(256000, 32);
+	wallBottom->SetTextureSize(Vector3(256000, 32, 0));
 
+	WallPtr wallLeft = std::static_pointer_cast<Wall>(GameObjectRegistry::sInstance->CreateGameObject('WALL'));
+	wallLeft->SetLocation(Vector3(-1280, 64, 0.f));
+	wallLeft->SetCollider(1280, 720);
+	wallLeft->SetTextureSize(Vector3(1280, 720, 0));
 }
 
 void Server::DoFrame()
