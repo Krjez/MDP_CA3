@@ -15,7 +15,7 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('WALL', SGO_Wall::StaticCreate);
-	
+	GameObjectRegistry::sInstance->RegisterCreationFunction('KILL', SGO_Killzone::StaticCreate);
 
 	InitNetworkManager();
 
@@ -63,6 +63,9 @@ void Server::SetupWorld()
 	wallLeft->SetLocation(Vector3(-1280, 64, 0.f));
 	wallLeft->SetCollider(1280, 720);
 	wallLeft->SetTextureSize(Vector3(1280, 720, 0));
+
+	KillzonePtr killzone = std::static_pointer_cast<Killzone>(GameObjectRegistry::sInstance->CreateGameObject('KILL'));
+	killzone->SetLocation(Vector3(0, 0, 0.f));
 }
 
 void Server::DoFrame()

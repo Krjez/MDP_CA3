@@ -162,6 +162,7 @@
     <ClInclude Include="RoboCatServer.hpp" />
     <ClInclude Include="RoboCatServerPCH.hpp" />
     <ClInclude Include="Server.hpp" />
+    <ClInclude Include="SGO_Killzone.hpp" />
     <ClInclude Include="SGO_Wall.hpp" />
     <ClInclude Include="YarnServer.hpp" />
   </ItemGroup>
@@ -179,6 +180,7 @@
     </ClCompile>
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="ServerMain.cpp" />
+    <ClCompile Include="SGO_Killzone.cpp" />
     <ClCompile Include="SGO_Wall.cpp" />
     <ClCompile Include="YarnServer.cpp" />
   </ItemGroup>

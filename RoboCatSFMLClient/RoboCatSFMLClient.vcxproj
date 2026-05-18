@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CGO_Killzone.hpp" />
     <ClInclude Include="CGO_Wall.hpp" />
     <ClInclude Include="Client.hpp" />
     <ClInclude Include="FontManager.hpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="YarnClient.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CGO_Killzone.cpp" />
     <ClCompile Include="CGO_Wall.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientMain.cpp" />

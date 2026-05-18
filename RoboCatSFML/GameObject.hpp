@@ -25,7 +25,7 @@ public:
 
 	virtual Pawn* AsPlayerPawn() { return nullptr; }
 
-	virtual uint32_t GetAllStateMask() const { return 0; }
+	virtual uint32_t GetAllStateMask() const { return ERS_AllState; }
 
 	virtual void HandleCollision(GameObject* other) {}
 

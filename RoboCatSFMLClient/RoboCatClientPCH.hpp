@@ -13,6 +13,7 @@
 #include "RoboCatClient.hpp"
 #include "YarnClient.hpp"
 #include "CGO_Wall.hpp"
+#include "CGO_Killzone.hpp"
 
 #include "HUD.hpp"
 

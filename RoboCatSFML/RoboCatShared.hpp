@@ -96,6 +96,7 @@ class GameObject;
 #include "Yarn.hpp"
 #include "ScoreBoardManager.hpp"
 #include "Wall.hpp"
+#include "Killzone.hpp"
 
 #include "WeightedTimedMovingAverage.hpp"
 #include "ReplicationCommand.hpp"

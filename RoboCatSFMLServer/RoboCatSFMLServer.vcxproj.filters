@@ -42,6 +42,9 @@
     <ClInclude Include="SGO_Wall.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SGO_Killzone.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClientProxy.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SGO_Wall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SGO_Killzone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
