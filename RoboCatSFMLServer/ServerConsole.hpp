@@ -8,7 +8,7 @@ public:
 
     static std::unique_ptr<ServerConsole> sInstance;
 
-    ~ServerConsole() = default;
+    ~ServerConsole() { Stop(); }
 
 	int GetPort() const { return m_port.load(); }
 	int GetLatency() const { return m_latency.load(); }

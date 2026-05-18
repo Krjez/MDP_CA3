@@ -266,6 +266,18 @@ void ServerConsole::Stop()
 {
 	std::cout << std::endl << "Closing server..." << std::endl;
 	m_waiting_thread_end = true;
+
+	// Unblock getline by injecting a fake enter key
+	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+	INPUT_RECORD ir = {};
+	ir.EventType = KEY_EVENT;
+	ir.Event.KeyEvent.bKeyDown = TRUE;
+	ir.Event.KeyEvent.wRepeatCount = 1;
+	ir.Event.KeyEvent.wVirtualKeyCode = VK_RETURN;
+	ir.Event.KeyEvent.uChar.AsciiChar = '\r';
+	DWORD written;
+	WriteConsoleInput(hStdin, &ir, 1, &written);
+
 	if (m_console_thread)
 	{
 		if (m_console_thread->get_id() != std::this_thread::get_id())
@@ -284,5 +296,6 @@ void ServerConsole::Stop()
 		}
 		m_console_thread.reset();
 	}
+	FreeConsole();
 	Server::s_instance->SetShouldKeepRunning(false);
 }
