@@ -166,6 +166,7 @@
     <ClInclude Include="InFlightPacket.hpp" />
     <ClInclude Include="InputAction.hpp" />
     <ClInclude Include="InputState.hpp" />
+    <ClInclude Include="Killzone.hpp" />
     <ClInclude Include="LinkingContext.hpp" />
     <ClInclude Include="LobbyState.hpp" />
     <ClInclude Include="MemoryBitStream.hpp" />
@@ -211,6 +212,7 @@
     <ClCompile Include="InFlightPacket.cpp" />
     <ClCompile Include="InputState.cpp" />
     <ClCompile Include="LobbyState.cpp" />
+    <ClCompile Include="Killzone.cpp" />
     <ClCompile Include="MemoryBitStream.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="MoveList.cpp" />

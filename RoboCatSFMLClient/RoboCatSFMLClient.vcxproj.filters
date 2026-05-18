@@ -79,6 +79,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Label.hpp">
+	  <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CGO_Killzone.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -150,6 +153,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Label.cpp">
+	  <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CGO_Killzone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

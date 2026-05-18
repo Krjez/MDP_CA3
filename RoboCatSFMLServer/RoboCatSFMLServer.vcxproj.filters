@@ -46,6 +46,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SS_LobbyState.hpp">
+	  <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SGO_Killzone.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -84,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SS_LobbyState.cpp">
+	  <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SGO_Killzone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

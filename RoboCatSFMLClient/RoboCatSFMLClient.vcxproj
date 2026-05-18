@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.hpp" />
+    <ClInclude Include="CGO_Killzone.hpp" />
     <ClInclude Include="CGO_Wall.hpp" />
     <ClInclude Include="Client.hpp" />
     <ClInclude Include="Container.hpp" />
@@ -44,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CGO_Killzone.cpp" />
     <ClCompile Include="CGO_Wall.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientMain.cpp" />
