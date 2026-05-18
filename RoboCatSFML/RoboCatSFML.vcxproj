@@ -162,10 +162,12 @@
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="GameObjectRegistry.hpp" />
+    <ClInclude Include="GameState.hpp" />
     <ClInclude Include="InFlightPacket.hpp" />
     <ClInclude Include="InputAction.hpp" />
     <ClInclude Include="InputState.hpp" />
     <ClInclude Include="LinkingContext.hpp" />
+    <ClInclude Include="LobbyState.hpp" />
     <ClInclude Include="MemoryBitStream.hpp" />
     <ClInclude Include="Move.hpp" />
     <ClInclude Include="MoveList.hpp" />
@@ -205,8 +207,10 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectRegistry.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InFlightPacket.cpp" />
     <ClCompile Include="InputState.cpp" />
+    <ClCompile Include="LobbyState.cpp" />
     <ClCompile Include="MemoryBitStream.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="MoveList.cpp" />

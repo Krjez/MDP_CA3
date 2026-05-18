@@ -14,7 +14,10 @@ Collider::Collider(GameObject* parent, bool trigger) :
 
 Collider::~Collider()
 {
-	Physics::sInstance->Unregister(this);
+	if (Physics::sInstance)
+	{
+		Physics::sInstance->Unregister(this);
+	}
 }
 
 bool Collider::CheckCollision(Collider* other)

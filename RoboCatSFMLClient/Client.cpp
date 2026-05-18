@@ -25,17 +25,8 @@ Client::Client()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('WALL', CGO_Wall::StaticCreate);
 
-	string destination = StringUtils::GetCommandLineArg(1);
-	string name = StringUtils::GetCommandLineArg(2);
-
-	SocketAddressPtr serverAddress = SocketAddressFactory::CreateIPv4FromString(destination);
-
-	NetworkManagerClient::StaticInit(*serverAddress, name);
-
-	//NetworkManagerClient::sInstance->SetSimulatedLatency(0.0f);
+	StateStack::sInstance->PushState<MenuState>();
 }
-
-
 
 void Client::DoFrame()
 {
@@ -43,26 +34,22 @@ void Client::DoFrame()
 
 	Engine::DoFrame();
 
-	NetworkManagerClient::sInstance->ProcessIncomingPackets();
+	if (NetworkManagerClient::sInstance)
+	{
+		NetworkManagerClient::sInstance->ProcessIncomingPackets();
+	}
 
-	RenderManager::sInstance->Render();
+	StateStack::sInstance->Render();
 
-	NetworkManagerClient::sInstance->SendOutgoingPackets();
+	if (NetworkManagerClient::sInstance)
+	{
+		NetworkManagerClient::sInstance->SendOutgoingPackets();
+	}
 }
 
 void Client::HandleEvent(sf::Event& p_event)
 {
-	switch (p_event.type)
-	{
-	case sf::Event::KeyPressed:
-		InputManager::sInstance->HandleInput(EIA_Pressed, p_event.key.code);
-		break;
-	case sf::Event::KeyReleased:
-		InputManager::sInstance->HandleInput(EIA_Released, p_event.key.code);
-		break;
-	default:
-		break;
-	}
+	StateStack::sInstance->HandleEvent(p_event);
 }
 
 bool Client::PollEvent(sf::Event& p_event)

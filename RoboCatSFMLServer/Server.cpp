@@ -21,6 +21,8 @@ Server::Server()
 	NetworkManagerServer::StaticInit(ServerConsole::sInstance->GetPort());
 	NetworkManagerServer::sInstance->SetSimulatedLatency(ServerConsole::sInstance->GetLatency());
 	NetworkManagerServer::sInstance->SetDropPacketChance(ServerConsole::sInstance->GetDropChance());
+
+	StateStack::sInstance->PushState<SS_LobbyState>();
 }
 
 

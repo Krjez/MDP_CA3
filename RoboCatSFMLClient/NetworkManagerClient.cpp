@@ -11,7 +11,8 @@ namespace
 NetworkManagerClient::NetworkManagerClient() :
 	mState(NCS_Uninitialized),
 	mDeliveryNotificationManager(true, false),
-	mLastRoundTripTime(0.f)
+	mLastRoundTripTime(0.f),
+	m_hello_limit(8)
 {
 }
 
@@ -67,10 +68,18 @@ void NetworkManagerClient::SendOutgoingPackets()
 
 void NetworkManagerClient::UpdateSayingHello()
 {
+
 	float time = Timing::sInstance.GetTimef();
 
 	if (time > mTimeOfLastHello + kTimeBetweenHellos)
 	{
+		m_hello_limit--;
+		if (m_hello_limit <= 0)
+		{
+			sInstance = nullptr;
+			delete this;
+			return;
+		}
 		SendHelloPacket();
 		mTimeOfLastHello = time;
 	}
@@ -235,4 +244,15 @@ void NetworkManagerClient::SendInputPacket()
 
 		SendPacket(inputPacket, mServerAddress);
 	}
+}
+
+void NetworkManagerClient::SendLobbyPacket()
+{
+	OutputMemoryBitStream lobbyPacket;
+
+	lobbyPacket.Write(kLobbyCC);
+	lobbyPacket.Write(mName);
+	lobbyPacket.Write(mIsReady);
+
+	SendPacket(lobbyPacket, mServerAddress);
 }

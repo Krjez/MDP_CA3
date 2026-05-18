@@ -40,9 +40,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SGO_Wall.hpp">
-	  <Filter>Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ServerConsole.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SS_LobbyState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -75,9 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SGO_Wall.cpp">
-	  <Filter>Source Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ServerConsole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SS_LobbyState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

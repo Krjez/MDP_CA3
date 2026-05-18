@@ -82,6 +82,8 @@ class GameObject;
 
 #include "StateStack.hpp"
 #include "State.hpp"
+#include "LobbyState.hpp"
+#include "GameState.hpp"
 
 #include "GameObject.hpp"
 #include "GameObjectRegistry.hpp"

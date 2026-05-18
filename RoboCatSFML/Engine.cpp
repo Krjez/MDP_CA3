@@ -14,6 +14,8 @@ Engine::Engine() : m_should_keep_running(true)
 
 	World::StaticInit();
 
+	StateStack::StaticInit();
+
 	ScoreBoardManager::StaticInit();
 }
 
@@ -67,9 +69,12 @@ int Engine::DoRunLoop()
 
 void Engine::DoFrame()
 {
-	World::sInstance->Update();
-	Physics::sInstance->SimulateAllBodies(Timing::sInstance.GetDeltaTime());
-	Physics::sInstance->HandleCollisions();
+	StateStack::sInstance->Update(Timing::sInstance.GetDeltaTime());
+
+	if(StateStack::sInstance->IsEmpty())
+	{
+		SetShouldKeepRunning(false);
+	}
 }
 
 

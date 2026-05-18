@@ -1,5 +1,7 @@
 #include "RoboCatShared.hpp"
 
+#include "regex"
+
 #include "SFML\Graphics.hpp"
 
 #include "InputManager.hpp"
@@ -16,6 +18,14 @@
 
 #include "HUD.hpp"
 
+#include "VisualElement.hpp"
+#include "Button.hpp"
+#include "Container.hpp"
+#include "Label.hpp"
+
+#include "MenuState.hpp"
+#include "CS_LobbyState.hpp"
+#include "CS_GameState.hpp"
 
 #include "ReplicationManagerClient.hpp"
 #include "NetworkManagerClient.hpp"

@@ -64,6 +64,16 @@ void NetworkManagerServer::ProcessPacket(ClientProxyPtr inClientProxy, InputMemo
 			HandleInputPacket(inClientProxy, inInputStream);
 		}
 		break;
+	case kLobbyCC:
+	{
+		string name;
+		inInputStream.Read(name);
+		bool isReady;
+		inInputStream.Read(isReady);
+		ScoreBoardManager::sInstance->GetEntry(inClientProxy->GetPlayerId())->SetPlayerName(name);
+		ScoreBoardManager::sInstance->GetEntry(inClientProxy->GetPlayerId())->SetReady(isReady);
+		break;
+	}
 	default:
 		LOG("Unknown packet type received from %s", inClientProxy->GetSocketAddress().ToString().c_str());
 		break;
@@ -275,12 +285,6 @@ void NetworkManagerServer::HandleClientDisconnected(ClientProxyPtr inClientProxy
 	mPlayerIdToClientMap.erase(inClientProxy->GetPlayerId());
 	mAddressToClientMap.erase(inClientProxy->GetSocketAddress());
 	static_cast<Server*> (Engine::s_instance.get())->HandleLostClient(inClientProxy);
-
-	//was that the last client? if so, bye!
-	if (mAddressToClientMap.empty())
-	{
-		Engine::s_instance->SetShouldKeepRunning(false);
-	}
 }
 
 void NetworkManagerServer::RegisterGameObject(GameObjectPtr inGameObject)

@@ -1,6 +1,13 @@
 #include "RoboCatPCH.hpp"
 #include "StateStack.hpp"
 
+std::unique_ptr<StateStack> StateStack::sInstance;
+
+void StateStack::StaticInit()
+{
+	sInstance.reset(new StateStack());
+}
+
 StateStack::PendingChange::PendingChange(std::function<void()> pending_call) : callback(pending_call)
 {
 }
@@ -14,6 +21,27 @@ void StateStack::Update(float dt)
 	for (auto itr = m_stack.rbegin(); itr != m_stack.rend(); ++itr)
 	{
 		if (!(*itr)->Update(dt))
+		{
+			break;
+		}
+	}
+	ApplyPendingChanges();
+}
+
+void StateStack::Render()
+{
+	for (State::Ptr& state : m_stack)
+	{
+		state->Draw();
+	}
+
+}
+
+void StateStack::HandleEvent(const sf::Event& event)
+{
+	for (auto itr = m_stack.rbegin(); itr != m_stack.rend(); ++itr)
+	{
+		if (!(*itr)->HandleEvent(event))
 		{
 			break;
 		}

@@ -19,7 +19,8 @@ ScoreBoardManager::ScoreBoardManager()
 ScoreBoardManager::Entry::Entry(uint32_t inPlayerId, const string& inPlayerName, const Vector3& inColor) :
 	mPlayerId(inPlayerId),
 	mPlayerName(inPlayerName),
-	mColor(inColor)
+	mColor(inColor),
+	mIsReady(false)
 {
 	SetScore(0);
 }
@@ -121,6 +122,7 @@ bool ScoreBoardManager::Entry::Write(OutputMemoryBitStream& inOutputStream) cons
 	inOutputStream.Write(mPlayerId);
 	inOutputStream.Write(mPlayerName);
 	inOutputStream.Write(mScore);
+	inOutputStream.Write(mIsReady);
 
 	return didSucceed;
 }
@@ -140,7 +142,8 @@ bool ScoreBoardManager::Entry::Read(InputMemoryBitStream& inInputStream)
 	{
 		SetScore(score);
 	}
-
+	
+	inInputStream.Read(mIsReady);
 
 	return didSucceed;
 }

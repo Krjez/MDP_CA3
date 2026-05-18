@@ -5,9 +5,14 @@ class State;
 class StateStack
 {
 public:
-	StateStack();
+	static void StaticInit();
+	static std::unique_ptr<StateStack> sInstance;
+
+public:
 	~StateStack();
 	void Update(float dt);
+	void Render();
+	void HandleEvent(const sf::Event& event);
 
 	template<typename T> void PushState();
 	void PopState();
@@ -16,6 +21,7 @@ public:
 	bool IsEmpty() const;
 
 private:
+	StateStack();
 	void ApplyPendingChanges();
 
 private:

@@ -8,9 +8,9 @@ public:
 public:
 	State(StateStack& stack);
 	virtual ~State();
-	virtual void Draw() = 0;
+	virtual void Draw() { };
 	virtual bool Update(float dt) = 0;
-	virtual bool HandleEvent(const sf::Event& event) = 0;
+	virtual bool HandleEvent(const sf::Event& event) { return true; };
 
 protected:
 	template<typename T>

@@ -164,6 +164,7 @@
     <ClInclude Include="Server.hpp" />
     <ClInclude Include="SGO_Wall.hpp" />
     <ClInclude Include="ServerConsole.hpp" />
+    <ClInclude Include="SS_LobbyState.hpp" />
     <ClInclude Include="YarnServer.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +183,7 @@
     <ClCompile Include="ServerConsole.cpp" />
     <ClCompile Include="ServerMain.cpp" />
     <ClCompile Include="SGO_Wall.cpp" />
+    <ClCompile Include="SS_LobbyState.cpp" />
     <ClCompile Include="YarnServer.cpp" />
   </ItemGroup>
   <ItemGroup>

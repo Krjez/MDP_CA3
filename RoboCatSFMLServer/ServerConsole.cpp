@@ -297,5 +297,8 @@ void ServerConsole::Stop()
 		m_console_thread.reset();
 	}
 	FreeConsole();
-	Server::s_instance->SetShouldKeepRunning(false);
+	if (Server::s_instance)
+	{
+		Server::s_instance->SetShouldKeepRunning(false);
+	}
 }

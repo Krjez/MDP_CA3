@@ -19,11 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.hpp" />
     <ClInclude Include="CGO_Wall.hpp" />
     <ClInclude Include="Client.hpp" />
+    <ClInclude Include="Container.hpp" />
+    <ClInclude Include="CS_GameState.hpp" />
+    <ClInclude Include="CS_LobbyState.hpp" />
     <ClInclude Include="FontManager.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="Label.hpp" />
+    <ClInclude Include="MenuState.hpp" />
     <ClInclude Include="NetworkManagerClient.hpp" />
     <ClInclude Include="PlayerSpriteComponent.hpp" />
     <ClInclude Include="RenderManager.hpp" />
@@ -32,16 +38,23 @@
     <ClInclude Include="RoboCatClientPCH.hpp" />
     <ClInclude Include="SpriteComponent.hpp" />
     <ClInclude Include="TextureManager.hpp" />
+    <ClInclude Include="VisualElement.hpp" />
     <ClInclude Include="WindowManager.hpp" />
     <ClInclude Include="YarnClient.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="CGO_Wall.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientMain.cpp" />
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="CS_GameState.cpp" />
+    <ClCompile Include="CS_LobbyState.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Label.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="NetworkManagerClient.cpp" />
     <ClCompile Include="PlayerSpriteComponent.cpp" />
     <ClCompile Include="RenderManager.cpp" />
@@ -55,6 +68,7 @@
     </ClCompile>
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="VisualElement.cpp" />
     <ClCompile Include="WindowManager.cpp" />
     <ClCompile Include="YarnClient.cpp" />
   </ItemGroup>
