@@ -1,6 +1,6 @@
 #include "RoboCatServerPCH.hpp"
+
 #include "SGO_Wall.hpp"
-#include <iostream>
 
 bool Server::StaticInit()
 {
@@ -15,18 +15,12 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('WALL', SGO_Wall::StaticCreate);
-	
 
-	InitNetworkManager();
+	ServerConsole::StaticInit();
 
-	// Setup latency
-	float latency = 0.0f;
-	string latencyString = StringUtils::GetCommandLineArg(2);
-	if (!latencyString.empty())
-	{
-		latency = stof(latencyString);
-	}
-	NetworkManagerServer::sInstance->SetSimulatedLatency(latency);
+	NetworkManagerServer::StaticInit(ServerConsole::sInstance->GetPort());
+	NetworkManagerServer::sInstance->SetSimulatedLatency(ServerConsole::sInstance->GetLatency());
+	NetworkManagerServer::sInstance->SetDropPacketChance(ServerConsole::sInstance->GetDropChance());
 }
 
 
@@ -36,15 +30,6 @@ int Server::Run()
 
 	return Engine::Run();
 }
-
-bool Server::InitNetworkManager()
-{
-	string portString = StringUtils::GetCommandLineArg(1);
-	uint16_t port = stoi(portString);
-
-	return NetworkManagerServer::StaticInit(port);
-}
-
 
 void Server::SetupWorld()
 {

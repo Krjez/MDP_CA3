@@ -17,8 +17,6 @@ public:
 
 private:
 	Server();
-
-	bool	InitNetworkManager();
 	void	SetupWorld();
 
 };
