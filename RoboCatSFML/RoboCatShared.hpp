@@ -80,6 +80,9 @@ class GameObject;
 #include "Move.hpp"
 #include "MoveList.hpp"
 
+#include "StateStack.hpp"
+#include "State.hpp"
+
 #include "GameObject.hpp"
 #include "GameObjectRegistry.hpp"
 
