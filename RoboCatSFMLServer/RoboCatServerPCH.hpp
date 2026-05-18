@@ -1,11 +1,14 @@
 #include "RoboCatShared.hpp"
 
+#include "iostream"
+
 #include "ReplicationManagerTransmissionData.hpp"
 #include "ReplicationManagerServer.hpp"
 
 #include "ClientProxy.hpp"
 #include "NetworkManagerServer.hpp"
 #include "Server.hpp"
+#include "ServerConsole.hpp"
 
 #include "RoboCatServer.hpp"
 #include "YarnServer.hpp"
