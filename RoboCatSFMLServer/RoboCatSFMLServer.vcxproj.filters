@@ -40,6 +40,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SGO_Wall.hpp">
+	  <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="ServerConsole.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -73,6 +75,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SGO_Wall.cpp">
+	  <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="ServerConsole.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
