@@ -8,6 +8,8 @@
 
 SS_GameState::SS_GameState(StateStack& stack) : GameState(stack), m_obstacle_distance(1000.f), m_last_obstacle(500.f), m_start_line(), m_start_time(0)
 {
+	static_cast<Server*>(&*Engine::s_instance)->RestartWorld();
+	static_cast<Server*>(&*Engine::s_instance)->RestartWorld();
 	SpawnStartLine();
 }
 
