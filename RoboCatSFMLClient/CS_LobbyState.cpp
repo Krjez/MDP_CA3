@@ -37,6 +37,18 @@ CS_LobbyState::CS_LobbyState(StateStack& stack) :
 	m_ip_input->SetText("");
 	m_gui_container.Pack(m_ip_input);
 
+	std::ifstream file("player_data.txt");
+	if (file.is_open())
+	{
+		std::string nameData;
+		std::string ipData;
+		getline(file, nameData);
+		getline(file, ipData);
+		m_name_input->SetText(nameData.substr(0, 20));
+		m_ip_input->SetText(ipData.substr(0, 25));
+		file.close();
+	}
+
 	m_connection_label = std::make_shared<gui::Label>("No Connection");
 	m_connection_label->setPosition(sf::Vector2f(midX, 350));
 	m_connection_label->GetTextRef().setCharacterSize(24);
@@ -214,6 +226,12 @@ void CS_LobbyState::HandleIpInput(const sf::Event& event)
 			event.key.scancode == sf::Keyboard::Scancode::Enter)
 		{
 			m_ip_input->Deactivate();
+
+			std::ofstream file("player_data.txt", std::ofstream::trunc);
+			file << m_name_input->GetText() << std::endl;
+			file << m_ip_input->GetText() << std::endl;
+			file.close();
+
 			return;
 		}
 	}
@@ -251,6 +269,12 @@ void CS_LobbyState::HandleNameInput(const sf::Event& event)
 			event.key.scancode == sf::Keyboard::Scancode::Enter)
 		{
 			m_name_input->Deactivate();
+
+			std::ofstream file("player_data.txt", std::ofstream::trunc);
+			file << m_name_input->GetText() << std::endl;
+			file << m_ip_input->GetText() << std::endl;
+			file.close();
+
 			if (NetworkManagerClient::sInstance)
 			{
 				NetworkManagerClient::sInstance->SetName(m_name_input->GetText());
