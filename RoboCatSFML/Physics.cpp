@@ -23,15 +23,12 @@ void Physics::CheckCollision(Collider* first, Collider* second, std::vector<Pair
 	}
 }
 
-Physics::Physics() : m_next_collider_id(0), m_proxy(false), m_physics_body_map()
+Physics::Physics() : m_physics_body_map()
 {
 }
 
 void Physics::Register(Collider* shape)
 {
-	shape->AssignId(m_next_collider_id);
-	++m_next_collider_id;
-
 	if (m_physics_body_map[shape->GetParent()])
 	{
 		m_dynamic_object_vector.emplace_back(shape);

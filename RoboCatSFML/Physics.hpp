@@ -12,20 +12,10 @@ public:
 public:
 	typedef std::pair<Collider*, Collider*> Pair;
 
-	struct PhysicsState
-	{
-		std::vector<sf::Vector2f> positions;
-		std::vector<sf::Vector2f> velocities;
-	};
-
 private:
 	std::vector<Collider*> m_dynamic_object_vector;
 	std::vector<Collider*> m_static_object_vector;
-	std::unordered_map<const GameObject*, PhysicsBody*> m_physics_body_map;
-	int m_next_collider_id;
-
-public:
-	bool m_proxy;
+	std::map<const GameObject*, PhysicsBody*> m_physics_body_map;
 
 private:
 	void CheckCollision(Collider* first, Collider* second, std::vector<Pair>& collisions);

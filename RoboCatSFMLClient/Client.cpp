@@ -22,7 +22,6 @@ bool Client::StaticInit()
 Client::Client()
 {
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatClient::StaticCreate);
-	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('WALL', CGO_Wall::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('KILL', CGO_Killzone::StaticCreate);
 

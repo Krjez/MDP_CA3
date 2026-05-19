@@ -11,6 +11,28 @@ void CS_GameState::Draw()
 	RenderManager::sInstance->Render();
 }
 
+bool CS_GameState::Update(float delta_time)
+{
+	GameState::Update(delta_time);
+
+	int playersAlive = 0;
+	for (GameObjectPtr go : World::sInstance->GetGameObjects())
+	{
+		if (go->AsPlayerPawn() != nullptr)
+		{
+			playersAlive++;
+		}
+	}
+
+	if (playersAlive == 0)
+	{
+		RequestStackClear();
+		RequestStackPush<CS_LobbyState>();
+	}
+
+	return false;
+}
+
 bool CS_GameState::HandleEvent(const sf::Event& event)
 {
 	switch (event.type)

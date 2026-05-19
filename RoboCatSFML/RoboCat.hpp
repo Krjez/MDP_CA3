@@ -19,7 +19,7 @@ public:
 
 	virtual	Pawn* AsPlayerPawn() override { return this; }
 
-	virtual void Update() override;
+	virtual void Update() override { };
 
 	void ProcessInput(float inDeltaTime, const InputState& inInputState) override;
 
@@ -39,7 +39,6 @@ private:
 protected:
 	float mLastMoveTimestamp;
 	float mThrustDir;
-	bool mIsShooting;
 };
 
 typedef shared_ptr<RoboCat> RoboCatPtr;

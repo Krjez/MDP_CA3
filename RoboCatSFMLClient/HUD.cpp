@@ -24,16 +24,6 @@ void HUD::Render()
 	RenderBandWidth();
 	RenderRoundTripTime();
 	RenderScoreBoard();
-	RenderHealth();
-}
-
-void HUD::RenderHealth()
-{
-	if (mHealth > 0)
-	{
-		string healthString = StringUtils::Sprintf("Health %d", mHealth);
-		RenderText(healthString, mHealthOffset, Colors::Red);
-	}
 }
 
 void HUD::RenderBandWidth()

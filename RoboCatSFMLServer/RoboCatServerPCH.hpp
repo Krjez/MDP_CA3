@@ -12,6 +12,5 @@
 #include "SS_GameState.hpp"
 
 #include "RoboCatServer.hpp"
-#include "YarnServer.hpp"
 #include "SGO_Wall.hpp"
 #include "SGO_Killzone.hpp"

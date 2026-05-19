@@ -191,7 +191,7 @@ void CS_LobbyState::CheckAllReady()
 		}
 	}
 
-	if (allReady && entries.size() >= 1)
+	if (allReady && entries.size() >= 2)
 	{
 		RequestStackClear();
 		RequestStackPush<CS_GameState>();

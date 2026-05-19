@@ -167,7 +167,6 @@
     <ClInclude Include="ServerConsole.hpp" />
     <ClInclude Include="SS_GameState.hpp" />
     <ClInclude Include="SS_LobbyState.hpp" />
-    <ClInclude Include="YarnServer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClientProxy.cpp" />
@@ -188,7 +187,6 @@
     <ClCompile Include="SGO_Wall.cpp" />
     <ClCompile Include="SS_GameState.cpp" />
     <ClCompile Include="SS_LobbyState.cpp" />
-    <ClCompile Include="YarnServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RoboCatSFML\RoboCatSFML.vcxproj">

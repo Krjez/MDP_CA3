@@ -1,9 +1,6 @@
 #include "RoboCatServerPCH.hpp"
 
-RoboCatServer::RoboCatServer() :
-	mCatControlType(ESCT_Human),
-	mTimeOfNextShot(0.f),
-	mTimeBetweenShots(0.2f)
+RoboCatServer::RoboCatServer() : RoboCat()
 {}
 
 void RoboCatServer::HandleDying()
@@ -19,51 +16,27 @@ void RoboCatServer::Update()
 	Vector3 oldVelocity = GetPhysics().GetVelocity();
 	float oldRotation = GetRotation();
 
-	//are you controlled by a player?
-	//if so, is there a move we haven't processed yet?
-	if (mCatControlType == ESCT_Human)
+	ClientProxyPtr client = NetworkManagerServer::sInstance->GetClientProxy(GetPlayerId());
+	if (client)
 	{
-		ClientProxyPtr client = NetworkManagerServer::sInstance->GetClientProxy(GetPlayerId());
-		if (client)
+		MoveList& moveList = client->GetUnprocessedMoveList();
+		for (const Move& unprocessedMove : moveList)
 		{
-			MoveList& moveList = client->GetUnprocessedMoveList();
-			for (const Move& unprocessedMove : moveList)
-			{
-				const InputState& currentState = unprocessedMove.GetInputState();
+			const InputState& currentState = unprocessedMove.GetInputState();
 
-				float deltaTime = unprocessedMove.GetDeltaTime();
+			float deltaTime = unprocessedMove.GetDeltaTime();
 
-				ProcessInput(deltaTime, currentState);
-
-				//LOG( "Server Move Time: %3.4f deltaTime: %3.4f left rot at %3.4f", unprocessedMove.GetTimestamp(), deltaTime, GetRotation() );
-
-			}
-
-			moveList.Clear();
+			ProcessInput(deltaTime, currentState);
 		}
-	}
 
-	HandleShooting();
+		moveList.Clear();
+	}
 
 	if (!RoboMath::Is2DVectorEqual(oldLocation, GetLocation()) ||
 		!RoboMath::Is2DVectorEqual(oldVelocity, GetPhysics().GetVelocity()) ||
 		oldRotation != GetRotation())
 	{
 		NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ECRS_Pose);
-	}
-}
-
-void RoboCatServer::HandleShooting()
-{
-	float time = Timing::sInstance.GetFrameStartTime();
-	if (mIsShooting && Timing::sInstance.GetFrameStartTime() > mTimeOfNextShot)
-	{
-		//not exact, but okay
-		mTimeOfNextShot = time + mTimeBetweenShots;
-
-		//fire!
-		YarnPtr yarn = std::static_pointer_cast<Yarn>(GameObjectRegistry::sInstance->CreateGameObject('YARN'));
-		yarn->InitFromShooter(this);
 	}
 }
 

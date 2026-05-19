@@ -18,7 +18,6 @@ private:
 	void	RenderBandWidth();
 	void	RenderRoundTripTime();
 	void	RenderScoreBoard();
-	void	RenderHealth();
 	void	RenderText(const string& inStr, const Vector3& origin, const Vector3& inColor);
 
 	Vector3										mBandwidthOrigin;

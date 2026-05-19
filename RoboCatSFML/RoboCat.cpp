@@ -6,8 +6,7 @@ RoboCat::RoboCat() :
 	m_collider(this, 64.f),
 	mMaxRotationSpeed(100.f),
 	mLastMoveTimestamp(0.f),
-	mThrustDir(0.f),
-	mIsShooting(false)
+	mThrustDir(0.f)
 {
 	m_collider.SetLayer(CollisionLayer::kPlayer);
 	m_collider.SetIgnoreLayers(CollisionLayer::kPlayer);
@@ -25,13 +24,6 @@ void RoboCat::ProcessInput(float inDeltaTime, const InputState& inInputState)
 
 	Vector3 direction = GetForwardVector() * mThrustDir;
 	m_physics_body.Accelerate(direction, Timing::sInstance.GetDeltaTime());
-
-	//mIsShooting = inInputState.IsShooting();
-}
-
-void RoboCat::Update()
-{
-
 }
 
 uint32_t RoboCat::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const

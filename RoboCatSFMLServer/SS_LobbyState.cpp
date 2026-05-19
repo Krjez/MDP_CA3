@@ -19,7 +19,7 @@ bool SS_LobbyState::Update(float dt)
 		}
 	}
 
-	if (allReady && entries.size() >= 1)
+	if (allReady && entries.size() >= 2)
 	{
 		RequestStackClear();
 		RequestStackPush<SS_GameState>();

@@ -5,11 +5,8 @@ Collider::Collider(GameObject* parent, bool trigger) :
 	Component(parent),
 	m_is_trigger(trigger),
 	m_layer(),
-	m_ignore_layers(),
-	m_id(-1),
-	m_replicate_collisions(false)
+	m_ignore_layers()
 {
-	
 	Physics::sInstance->Register(this);
 }
 
@@ -24,26 +21,6 @@ Collider::~Collider()
 bool Collider::CheckCollision(Collider* other)
 {
 	return other->CollideWith(this);
-}
-
-int Collider::GetId() const
-{
-	return m_id;
-}
-
-void Collider::SetReplicateCollisions(bool state)
-{
-	m_replicate_collisions = state;
-}
-
-bool Collider::ShouldReplicateCollisions() const
-{
-	return m_replicate_collisions;
-}
-
-void Collider::AssignId(int id)
-{
-	m_id = id;
 }
 
 bool Collider::IsTrigger() const

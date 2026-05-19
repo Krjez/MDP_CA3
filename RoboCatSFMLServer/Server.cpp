@@ -13,7 +13,6 @@ Server::Server()
 {
 	// TODO: Replace with our player pawn
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
-	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('WALL', SGO_Wall::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('KILL', SGO_Killzone::StaticCreate);
 
@@ -53,7 +52,7 @@ void Server::SetupWorld()
 	wallLeft->SetTextureSize(Vector3(1280, 720, 0));
 
 	KillzonePtr killzone = std::static_pointer_cast<Killzone>(GameObjectRegistry::sInstance->CreateGameObject('KILL'));
-	killzone->SetLocation(Vector3(0, 0, 0));
+	killzone->SetLocation(Vector3(-2000, 0, 0));
 
 
 }

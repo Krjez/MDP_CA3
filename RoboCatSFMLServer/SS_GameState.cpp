@@ -41,16 +41,13 @@ bool SS_GameState::Update(float dt)
 		}
 	}
 
-	/*
 	if (playersAlive == 0)
 	{
 		RequestStackClear();
 		RequestStackPush<SS_LobbyState>();
-		return;
 	}
-	*/
-
-	if (playersAlive <= 0)
+	
+	if (playersAlive <= 1)
 	{
 		for (GameObjectPtr go : World::sInstance->GetGameObjects())
 		{

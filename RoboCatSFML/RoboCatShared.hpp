@@ -106,7 +106,6 @@ class GameObject;
 #include "RoboCat.hpp"
 #include "World.hpp"
 #include "Timing.hpp"
-#include "Yarn.hpp"
 #include "ScoreBoardManager.hpp"
 #include "Wall.hpp"
 #include "Killzone.hpp"

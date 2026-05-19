@@ -3,13 +3,7 @@
 enum CollisionLayer
 {
 	kDefault = 1 << 0,
-	kPlayer = 1 << 1,
-	kPlayerDisabled = 1 << 2,
-	kBall = 1 << 3,
-	kWall = 1 << 4,
-	kPlayerBarrier = 1 << 5,
-	kPickup = 1 << 6,
-	kGoal = 1 << 7,
+	kPlayer = 1 << 1
 };
 
 enum ColliderType
@@ -26,8 +20,6 @@ class PolygonCollider;
 class Collider : public Component
 {
 private:
-	int m_id;
-	int m_replicate_collisions;
 	bool m_is_trigger;
 	CollisionLayer m_layer;
 	unsigned int m_ignore_layers;
@@ -45,10 +37,7 @@ public:
 	virtual bool CollideWith(CircleCollider* other) = 0;
 	virtual bool CollideWith(PolygonCollider* other) = 0;
 
-	int GetId() const;
-	void SetReplicateCollisions(bool state);
 	bool ShouldReplicateCollisions() const;
-	void AssignId(int id);
 
 	bool IsTrigger() const;
 	CollisionLayer GetLayer() const;
