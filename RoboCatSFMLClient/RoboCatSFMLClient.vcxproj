@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Background.hpp" />
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="CGO_Killzone.hpp" />
     <ClInclude Include="CGO_Wall.hpp" />
@@ -44,6 +45,7 @@
     <ClInclude Include="YarnClient.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CGO_Killzone.cpp" />
     <ClCompile Include="CGO_Wall.cpp" />

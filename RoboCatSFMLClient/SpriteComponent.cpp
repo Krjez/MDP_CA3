@@ -1,8 +1,9 @@
 #include "RoboCatClientPCH.hpp"
 
 
-SpriteComponent::SpriteComponent(GameObject* inGameObject) :
-	mGameObject(inGameObject)
+SpriteComponent::SpriteComponent(GameObject* inGameObject, int z_order) :
+	mGameObject(inGameObject),
+	m_z_order(z_order)
 {
 	//and add yourself to the rendermanager...
 	RenderManager::sInstance->AddComponent(this);

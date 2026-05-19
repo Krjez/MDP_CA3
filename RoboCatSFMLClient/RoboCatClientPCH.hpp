@@ -1,7 +1,6 @@
 #include "RoboCatShared.hpp"
 
 #include "regex"
-#include <fstream>
 
 #include "SFML\Graphics.hpp"
 
@@ -17,6 +16,7 @@
 #include "YarnClient.hpp"
 #include "CGO_Wall.hpp"
 #include "CGO_Killzone.hpp"
+#include "Background.hpp"
 
 #include "HUD.hpp"
 

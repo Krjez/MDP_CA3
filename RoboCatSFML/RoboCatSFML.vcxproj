@@ -182,6 +182,7 @@
     <ClInclude Include="RoboCatPCH.hpp" />
     <ClInclude Include="RoboCatShared.hpp" />
     <ClInclude Include="RoboMath.hpp" />
+    <ClInclude Include="SaveManager.hpp" />
     <ClInclude Include="ScoreBoardManager.hpp" />
     <ClInclude Include="SocketAddress.hpp" />
     <ClInclude Include="SocketAddressFactory.hpp" />
@@ -229,6 +230,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RoboMath.cpp" />
+    <ClCompile Include="SaveManager.cpp" />
     <ClCompile Include="ScoreBoardManager.cpp" />
     <ClCompile Include="SocketAddress.cpp" />
     <ClCompile Include="SocketAddressFactory.cpp" />

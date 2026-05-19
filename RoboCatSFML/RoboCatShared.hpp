@@ -38,6 +38,9 @@ const int SOCKET_ERROR = -1;
 #include "functional"
 #include "thread"
 #include "future"
+#include "fstream"
+#include "iostream"
+#include "sstream"
 
 using std::shared_ptr;
 using std::unique_ptr;
@@ -79,6 +82,8 @@ class GameObject;
 #include "InputState.hpp"
 #include "Move.hpp"
 #include "MoveList.hpp"
+
+#include "SaveManager.hpp"
 
 #include "StateStack.hpp"
 #include "State.hpp"

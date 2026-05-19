@@ -6,7 +6,7 @@ void SGO_Killzone::Update()
 	Killzone::Update();
 	NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ERS_Pose);
 
-	float threshold = GetLocation().mX + 1158;
+	float threshold = GetLocation().mX + 576;
 
 	for (GameObjectPtr go : World::sInstance->GetGameObjects())
 	{

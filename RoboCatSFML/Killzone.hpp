@@ -16,6 +16,7 @@ protected:
 	Killzone();
 	float mSpeed;
 	float mMoved;
+	float mMaxX;
 
 };
 

@@ -1,8 +1,6 @@
 #include "RoboCatServerPCH.hpp"
 #include "ServerConsole.hpp"
 
-#include "sstream"
-
 std::unique_ptr<ServerConsole> ServerConsole::sInstance;
 
 namespace

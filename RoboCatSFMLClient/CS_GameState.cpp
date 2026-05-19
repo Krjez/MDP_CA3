@@ -1,8 +1,9 @@
 #include "RoboCatClientPCH.hpp"
 #include "CS_GameState.hpp"
 
-CS_GameState::CS_GameState(StateStack& stack) : GameState(stack)
+CS_GameState::CS_GameState(StateStack& stack) : GameState(stack), m_background()
 {
+
 }
 
 void CS_GameState::Draw()

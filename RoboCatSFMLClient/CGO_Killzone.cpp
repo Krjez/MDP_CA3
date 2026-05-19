@@ -3,7 +3,8 @@
 
 CGO_Killzone::CGO_Killzone()
 {
-	mSpriteComponent.reset(new SpriteComponent(this));
-	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("killzone"));
-	mSpriteComponent->SetTextureSize(1280, 720);
+	mSpriteComponent.reset(new SpriteComponent(this, 2));
+	mSpriteComponent->SetTexture(TextureManager::sInstance->GetTexture("cat"));
+	mSpriteComponent->SetTextureSize(128, 128);
+	mSpriteComponent->GetSprite().setScale(10,10);
 }

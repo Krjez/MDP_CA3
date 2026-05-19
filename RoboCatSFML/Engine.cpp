@@ -4,6 +4,8 @@ std::unique_ptr<Engine> Engine::s_instance;
 
 Engine::Engine() : m_should_keep_running(true)
 {
+	SaveManager::StaticInit();
+
 	SocketUtil::StaticInit();
 
 	srand(static_cast<uint32_t>(time(nullptr)));

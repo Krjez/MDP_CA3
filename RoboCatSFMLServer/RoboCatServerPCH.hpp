@@ -1,7 +1,5 @@
 #include "RoboCatShared.hpp"
 
-#include "iostream"
-
 #include "ReplicationManagerTransmissionData.hpp"
 #include "ReplicationManagerServer.hpp"
 

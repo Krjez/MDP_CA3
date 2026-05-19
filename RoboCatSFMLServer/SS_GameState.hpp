@@ -11,7 +11,7 @@ public:
 private:
 	float m_obstacle_distance;
 	float m_last_obstacle;
-	WallPtr m_start_line;
+	std::weak_ptr<Wall> m_start_line;
 	float m_start_time;
 
 };

@@ -21,7 +21,7 @@ CS_LobbyState::CS_LobbyState(StateStack& stack) :
 	m_name_input->setPosition(sf::Vector2f(midX, 150));
 	m_name_input->CentreButton();
 	m_name_input->SetToggle(true);
-	m_name_input->SetText("Player");
+	m_name_input->SetText(SaveManager::sInstance->LoadData("name", "Player"));
 	m_gui_container.Pack(m_name_input);
 
 	gui::Label::Ptr ipLabel = std::make_shared<gui::Label>("Enter Server IP:");
@@ -34,20 +34,8 @@ CS_LobbyState::CS_LobbyState(StateStack& stack) :
 	m_ip_input->setPosition(sf::Vector2f(midX, 250));
 	m_ip_input->CentreButton();
 	m_ip_input->SetToggle(true);
-	m_ip_input->SetText("");
+	m_ip_input->SetText(SaveManager::sInstance->LoadData("ip"));
 	m_gui_container.Pack(m_ip_input);
-
-	std::ifstream file("player_data.txt");
-	if (file.is_open())
-	{
-		std::string nameData;
-		std::string ipData;
-		getline(file, nameData);
-		getline(file, ipData);
-		m_name_input->SetText(nameData.substr(0, 20));
-		m_ip_input->SetText(ipData.substr(0, 25));
-		file.close();
-	}
 
 	m_connection_label = std::make_shared<gui::Label>("No Connection");
 	m_connection_label->setPosition(sf::Vector2f(midX, 350));
@@ -63,16 +51,8 @@ CS_LobbyState::CS_LobbyState(StateStack& stack) :
 	connectButton->SetCallback([this]()
 		{
 			SocketAddressPtr serverAddress = SocketAddressFactory::CreateIPv4FromString(m_ip_input->GetText());
-			if (!NetworkManagerClient::sInstance)
-			{
-				NetworkManagerClient::StaticInit(*serverAddress, m_name_input->GetText());
-			}
-			else
-			{
-				delete NetworkManagerClient::sInstance;
-				NetworkManagerClient::sInstance = nullptr;
-				NetworkManagerClient::StaticInit(*serverAddress, m_name_input->GetText());
-			}
+			NetworkManagerClient::StaticInit(*serverAddress, m_name_input->GetText());
+			World::StaticInit();
 		});
 	m_gui_container.Pack(connectButton);
 
@@ -127,7 +107,8 @@ void CS_LobbyState::Draw()
 
 bool CS_LobbyState::Update(float dt)
 {
-	CheckAllReady();
+
+	m_ready_button->SetVisibility(false);
 
 	if (m_is_ready)
 	{
@@ -145,7 +126,7 @@ bool CS_LobbyState::Update(float dt)
 		return false;
 	}
 
-	m_ready_button->SetVisibility(false);
+	CheckAllReady();
 
 	switch (NetworkManagerClient::sInstance->GetState())
 	{
@@ -227,10 +208,7 @@ void CS_LobbyState::HandleIpInput(const sf::Event& event)
 		{
 			m_ip_input->Deactivate();
 
-			std::ofstream file("player_data.txt", std::ofstream::trunc);
-			file << m_name_input->GetText() << std::endl;
-			file << m_ip_input->GetText() << std::endl;
-			file.close();
+			SaveManager::sInstance->SaveData("ip", m_ip_input->GetText());
 
 			return;
 		}
@@ -270,10 +248,7 @@ void CS_LobbyState::HandleNameInput(const sf::Event& event)
 		{
 			m_name_input->Deactivate();
 
-			std::ofstream file("player_data.txt", std::ofstream::trunc);
-			file << m_name_input->GetText() << std::endl;
-			file << m_ip_input->GetText() << std::endl;
-			file.close();
+			SaveManager::sInstance->SaveData("name", m_name_input->GetText());
 
 			if (NetworkManagerClient::sInstance)
 			{
@@ -293,7 +268,12 @@ void CS_LobbyState::HandleNameInput(const sf::Event& event)
 			m_name_input->SetText(current_text);
 		}
 	}
-	if (event.type == sf::Event::TextEntered && event.text.unicode > 31 && event.text.unicode < 128 && m_name_input->GetText().size() < 20)
+	if (event.type == sf::Event::TextEntered &&
+		event.text.unicode > 31 &&
+		event.text.unicode < 128 &&
+		event.text.unicode != 59 && // ';' is reserved for save data separation
+		event.text.unicode != 61 && // '=' is reserved for save data separation
+		m_name_input->GetText().size() < 20)
 	{
 		char symbol = static_cast<char>(event.text.unicode);
 		std::string appended_name = m_name_input->GetText() + symbol;

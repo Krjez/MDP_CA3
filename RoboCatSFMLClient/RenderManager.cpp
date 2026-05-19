@@ -8,6 +8,20 @@ RenderManager::RenderManager()
 	WindowManager::sInstance->setView(view);
 }
 
+void RenderManager::SortByZOrder()
+{
+	for (int i = 1; i < mComponents.size(); ++i) {
+		SpriteComponent* key = mComponents[i];
+		int j = i - 1;
+
+		while (j >= 0 && mComponents[j]->GetZOrder() > key->GetZOrder()) {
+			mComponents[j + 1] = mComponents[j];
+			j = j - 1;
+		}
+		mComponents[j + 1] = key;
+	}
+}
+
 
 void RenderManager::StaticInit()
 {
@@ -18,6 +32,8 @@ void RenderManager::StaticInit()
 void RenderManager::AddComponent(SpriteComponent* inComponent)
 {
 	mComponents.emplace_back(inComponent);
+
+	SortByZOrder();
 }
 
 void RenderManager::RemoveComponent(SpriteComponent* inComponent)
@@ -33,6 +49,8 @@ void RenderManager::RemoveComponent(SpriteComponent* inComponent)
 		}
 		mComponents.pop_back();
 	}
+
+	SortByZOrder();
 }
 
 int RenderManager::GetComponentIndex(SpriteComponent* inComponent) const

@@ -3,15 +3,18 @@
 
 Killzone::Killzone() :
 	GameObject(),
-	mSpeed(3),
-	mMoved(0)
+	mSpeed(20),
+	mMoved(0),
+	mMaxX(-10000)
 {
 }
 
 void Killzone::Update()
 {
 	mMoved += mSpeed * Timing::sInstance.GetDeltaTime();
-	SetLocation(Vector3(World::sInstance->GetLeadingPawnXLocation() + mMoved - 2100, 64, 0));
+	float newX = World::sInstance->GetLeadingPawnXLocation() + mMoved - 1680;
+	mMaxX = std::max(mMaxX, newX);
+	SetLocation(Vector3(mMaxX, 300, 0));
 }
 
 uint32_t Killzone::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const

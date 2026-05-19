@@ -18,6 +18,10 @@ NetworkManagerClient::NetworkManagerClient() :
 
 void NetworkManagerClient::StaticInit(const SocketAddress& inServerAddress, const string& inName)
 {
+	if (sInstance)
+	{
+		delete sInstance;
+	}
 	sInstance = new NetworkManagerClient();
 	return sInstance->Init(inServerAddress, inName);
 }
