@@ -1,5 +1,6 @@
 /*
-*  Provided in class, removed unnecessary code
+*  Provided in class, edited by:
+*  Jakub Polacek - GD4b - D00260171
 */
 
 #include "RoboCatClientPCH.hpp"
