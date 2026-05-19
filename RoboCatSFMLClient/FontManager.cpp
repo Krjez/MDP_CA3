@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatClientPCH.hpp"
 
 std::unique_ptr<FontManager> FontManager::sInstance;

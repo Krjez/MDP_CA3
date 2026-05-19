@@ -1,4 +1,6 @@
-//I take care of rendering things!
+/*
+*  Provided in class, removed unnecessary code
+*/
 
 class HUD
 {
@@ -8,8 +10,6 @@ public:
 	static std::unique_ptr< HUD >	sInstance;
 
 	void Render();
-
-	void SetPlayerHealth(int inHealth) { mHealth = inHealth; }
 
 private:
 
@@ -24,8 +24,6 @@ private:
 	Vector3										mRoundTripTimeOrigin;
 	Vector3										mScoreBoardOrigin;
 	Vector3										mScoreOffset;
-	Vector3										mHealthOffset;
-	int											mHealth;
 };
 
 

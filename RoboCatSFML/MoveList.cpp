@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatPCH.hpp"
 
 const Move& MoveList::AddMove(const InputState& inInputState, float inTimestamp)

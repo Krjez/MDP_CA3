@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatPCH.hpp"
 
 void OutputMemoryBitStream::WriteBits(uint8_t inData,

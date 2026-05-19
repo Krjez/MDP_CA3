@@ -1,3 +1,9 @@
+/*
+*  Provided in class, edited by:
+*  Petr Sulc - GD4b - D00261476
+*  Jakub Polacek - GD4b - D00260171
+*/
+
 #pragma once
 #define CLASS_IDENTIFICATION(in_code, in_class) \
 enum {kClassId = in_code}; \

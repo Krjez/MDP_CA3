@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 enum SocketAddressFamily
 {
 	INET = AF_INET,

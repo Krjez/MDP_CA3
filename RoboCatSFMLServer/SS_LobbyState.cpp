@@ -1,3 +1,8 @@
+/*
+*  Written by:
+*  Petr Sulc - GD4b - D00261476
+*/
+
 #include "RoboCatServerPCH.hpp"
 #include "SS_LobbyState.hpp"
 

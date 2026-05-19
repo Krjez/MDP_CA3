@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 enum ReplicationAction
 {
 	RA_Create,

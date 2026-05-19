@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatClientPCH.hpp"
 
 #if _WIN32

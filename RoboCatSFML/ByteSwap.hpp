@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #pragma once
 inline uint16_t ByteSwap2(uint16_t inData)
 {

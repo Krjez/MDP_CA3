@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatPCH.hpp"
 
 bool Move::Write(OutputMemoryBitStream& inOutputStream) const

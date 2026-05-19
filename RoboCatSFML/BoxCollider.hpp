@@ -1,5 +1,9 @@
-#pragma once
+/*
+*  Imported from CA2 and edited by:
+*  Petr Sulc - GD4b - D00261476
+*/
 
+#pragma once
 class BoxCollider : public Collider
 {
 public:

@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 typedef GameObjectPtr(*GameObjectCreationFunc)();
 
 class GameObjectRegistry

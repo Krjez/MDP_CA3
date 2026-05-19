@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatClientPCH.hpp"
 
 PlayerSpriteComponent::PlayerSpriteComponent(GameObject* inGameObject) :

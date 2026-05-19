@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatPCH.hpp"
 
 float kDesiredFrameTime = 0.0166f;

@@ -1,6 +1,9 @@
 /*
-* the world tracks all the live game objects. Failry inefficient for now, but not that much of a problem
+*  Provided in class, edited by:
+*  Petr Sulc - GD4b - D00261476
+*  Jakub Polacek - GD4b - D00260171
 */
+
 class World
 {
 
@@ -24,7 +27,5 @@ private:
 	World();
 
 	std::vector< GameObjectPtr >	mGameObjects;
-
-
 };
 

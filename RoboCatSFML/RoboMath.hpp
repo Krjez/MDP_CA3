@@ -1,3 +1,8 @@
+/*
+*  Provided in class, edited by:
+*  Petr Sulc - GD4b - D00261476
+*/
+
 class Vector3
 {
 public:

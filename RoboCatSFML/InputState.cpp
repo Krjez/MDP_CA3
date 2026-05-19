@@ -1,3 +1,7 @@
+/*
+*  Provided in class, removed unnecessary code
+*/
+
 #include "RoboCatPCH.hpp"
 
 namespace

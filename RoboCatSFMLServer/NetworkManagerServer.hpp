@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 class NetworkManagerServer : public NetworkManager
 {
 public:

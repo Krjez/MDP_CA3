@@ -1,3 +1,7 @@
+/*
+*  Provided in class, removed unnecessary code
+*/
+
 class InputManager
 {
 public:

@@ -1,6 +1,10 @@
+/*
+*  Provided in class, edited by:
+*  Petr Sulc - GD4b - D00261476
+*  Jakub Polacek - GD4b - D00260171
+*/
+
 #include "RoboCatPCH.hpp"
-
-
 
 std::unique_ptr< World > World::sInstance;
 

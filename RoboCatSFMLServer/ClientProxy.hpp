@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 class ClientProxy
 {
 public:

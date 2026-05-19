@@ -1,3 +1,7 @@
+/*
+*  Provided in class, removed unnecessary code
+*/
+
 #include "RoboCatClientPCH.hpp"
 
 unique_ptr< InputManager >	InputManager::sInstance;

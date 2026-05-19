@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatServerPCH.hpp"
 
 NetworkManagerServer* NetworkManagerServer::sInstance;

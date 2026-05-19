@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 com.JoshuaGlazer.Book. All rights reserved.
 //
 
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatPCH.hpp"
 
 #include <random>

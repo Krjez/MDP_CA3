@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 enum EInputAction
 {
 	EIA_Pressed,

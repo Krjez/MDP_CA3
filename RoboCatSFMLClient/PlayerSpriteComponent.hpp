@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #pragma once
 class PlayerSpriteComponent : public SpriteComponent
 {

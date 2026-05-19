@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 namespace StringUtils
 {
 	string GetCommandLineArg(int inIndex);

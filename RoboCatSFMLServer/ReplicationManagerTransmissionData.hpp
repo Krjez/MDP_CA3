@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 class ReplicationManagerServer;
 
 class ReplicationManagerTransmissionData : public TransmissionData

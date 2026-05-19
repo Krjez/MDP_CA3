@@ -1,4 +1,7 @@
-//I take care of rendering things!
+/*
+*  Provided in class, edited by:
+*  Petr Sulc - GD4b - D00261476
+*/
 
 class RenderManager
 {

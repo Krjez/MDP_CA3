@@ -1,3 +1,8 @@
+/*
+*  Written by:
+*  Jakub Polacek - GD4b - D00260171
+*/
+
 #include "RoboCatPCH.hpp"
 #include "Wall.hpp"
 

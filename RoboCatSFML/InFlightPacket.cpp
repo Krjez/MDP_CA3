@@ -1,3 +1,7 @@
+/*
+*  Provided in class, unedited
+*/
+
 #include "RoboCatPCH.hpp"
 
 InFlightPacket::InFlightPacket(PacketSequenceNumber inSequenceNumber) :
