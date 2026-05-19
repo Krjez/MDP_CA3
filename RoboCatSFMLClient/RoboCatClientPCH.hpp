@@ -1,6 +1,7 @@
 #include "RoboCatShared.hpp"
 
 #include "regex"
+#include <fstream>
 
 #include "SFML\Graphics.hpp"
 
