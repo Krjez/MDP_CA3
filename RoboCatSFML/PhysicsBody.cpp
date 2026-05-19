@@ -49,12 +49,11 @@ void PhysicsBody::Move(Vector3 delta)
 void PhysicsBody::Simulate(float dt)
 {
 	m_velocity += GetDrag() * (dt / m_mass);
-	Vector3 velocityBeforeAcc(m_velocity);
 
 	if (m_velocity.LengthSq() > m_max_speed * m_max_speed)
 	{
 		m_velocity.Normalize();
-		m_velocity *= velocityBeforeAcc.Length();
+		m_velocity *= m_max_speed;
 	}
 
 	m_velocity.FloorToInt();

@@ -22,7 +22,7 @@ bool SS_LobbyState::Update(float dt)
 	if (allReady && entries.size() >= 1)
 	{
 		RequestStackClear();
-		RequestStackPush<GameState>();
+		RequestStackPush<SS_GameState>();
 		std::cout << "All players are ready, starting the game!" << std::endl;
 	}
 

@@ -53,7 +53,9 @@ void Server::SetupWorld()
 	wallLeft->SetTextureSize(Vector3(1280, 720, 0));
 
 	KillzonePtr killzone = std::static_pointer_cast<Killzone>(GameObjectRegistry::sInstance->CreateGameObject('KILL'));
-	killzone->SetLocation(Vector3(0, 0, 0.f));
+	killzone->SetLocation(Vector3(0, 0, 1.f));
+
+
 }
 
 void Server::DoFrame()
@@ -84,6 +86,19 @@ void Server::SpawnPlayerPawn(int inPlayerId)
 	cat->SetPlayerId(inPlayerId);
 	//gotta pick a better spawn location than this...
 	cat->SetLocation(Vector3(600.f - static_cast<float>(inPlayerId), 400.f, 0.f));
+}
+
+void Server::RestartWorld()
+{
+	for (auto& go : World::sInstance->GetGameObjects())
+	{
+		go->SetDoesWantToDie(true);
+	}
+
+	World::sInstance->Update();
+
+	SetupWorld();
+	NetworkManagerServer::sInstance->RespawnPlayers();
 }
 
 void Server::HandleLostClient(ClientProxyPtr inClientProxy)

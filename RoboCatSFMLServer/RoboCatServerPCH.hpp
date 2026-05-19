@@ -11,6 +11,7 @@
 #include "ServerConsole.hpp"
 
 #include "SS_LobbyState.hpp"
+#include "SS_GameState.hpp"
 
 #include "RoboCatServer.hpp"
 #include "YarnServer.hpp"

@@ -3,22 +3,27 @@
 
 void SGO_Killzone::Update()
 {
-	mMoved += mSpeed * Timing::sInstance.GetDeltaTime();
-	float gap = World::sInstance->GetLeadingPawnXLocation();
+	Killzone::Update();
+	NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ERS_Pose);
+
+	float threshold = GetLocation().mX + 1158;
 
 	for (GameObjectPtr go : World::sInstance->GetGameObjects())
 	{
 		if (go->AsPlayerPawn() != nullptr)
 		{
-			float distanceFromLeader = gap - go->GetLocation().mX;
-
-			if (distanceFromLeader < mMoved)
+			if (go->GetLocation().mX < threshold)
 			{
 				//kill the player
-				go->DoesWantToDie();
+				go->SetDoesWantToDie(true);
 			}
 		}
 	}
+}
+
+void SGO_Killzone::HandleDying()
+{
+	NetworkManagerServer::sInstance->UnregisterGameObject(this);
 }
 
 SGO_Killzone::SGO_Killzone(){}

@@ -5,7 +5,7 @@ public:
 	static GameObjectPtr	StaticCreate() { return NetworkManagerServer::sInstance->RegisterAndReturn(new SGO_Killzone()); }
 
 	virtual void Update() override;
-
+	virtual void HandleDying() override;
 protected:
 	SGO_Killzone();
 };

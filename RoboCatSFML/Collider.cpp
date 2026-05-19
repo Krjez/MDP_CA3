@@ -9,6 +9,7 @@ Collider::Collider(GameObject* parent, bool trigger) :
 	m_id(-1),
 	m_replicate_collisions(false)
 {
+	
 	Physics::sInstance->Register(this);
 }
 

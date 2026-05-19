@@ -14,10 +14,11 @@ public:
 	GameObjectPtr GetPlayerPawn(int inPlayerId);
 	void SpawnPlayerPawn(int inPlayerId);
 
+	void RestartWorld();
+
 
 private:
 	Server();
 	void	SetupWorld();
-
 };
 

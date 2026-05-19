@@ -11,3 +11,5 @@ void CGO_Wall::SetTextureRect(float width, float height)
 {
 	mSpriteComponent->SetTextureSize(width, height);
 }
+
+CGO_Wall::~CGO_Wall() = default;

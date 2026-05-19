@@ -165,6 +165,7 @@
     <ClInclude Include="SGO_Killzone.hpp" />
     <ClInclude Include="SGO_Wall.hpp" />
     <ClInclude Include="ServerConsole.hpp" />
+    <ClInclude Include="SS_GameState.hpp" />
     <ClInclude Include="SS_LobbyState.hpp" />
     <ClInclude Include="YarnServer.hpp" />
   </ItemGroup>
@@ -185,6 +186,7 @@
     <ClCompile Include="ServerMain.cpp" />
     <ClCompile Include="SGO_Killzone.cpp" />
     <ClCompile Include="SGO_Wall.cpp" />
+    <ClCompile Include="SS_GameState.cpp" />
     <ClCompile Include="SS_LobbyState.cpp" />
     <ClCompile Include="YarnServer.cpp" />
   </ItemGroup>
